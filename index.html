@@ -3,574 +3,348 @@
 <head>
   <meta charset="UTF-8" />
   <meta name="viewport" content="width=device-width, initial-scale=1.0" />
-  <title>Executive Assistant Training System | Team Presentation</title>
+  <title>index.html | Executive Assistant Training System</title>
   <style>
     :root{
-      --bg:#f6f8fc;
-      --bg-soft:#eef3ff;
+      --bg:#f5f8ff;
+      --bg-soft:#edf3ff;
+      --card:#ffffff;
       --text:#10213a;
-      --muted:#61708b;
-      --line:#dbe4f2;
-      --primary:#275df6;
-      --primary-2:#6d5efc;
+      --muted:#5f708d;
+      --line:#dce5f3;
+      --primary:#2457f5;
+      --primary2:#6b61ff;
       --success:#0f9f6e;
       --warning:#d97706;
       --danger:#dc2626;
-      --card:#ffffff;
-      --shadow:0 18px 48px rgba(28, 54, 105, 0.10);
-      --radius-xl:28px;
-      --radius-lg:22px;
-      --radius-md:16px;
-      --max:1220px;
+      --shadow:0 18px 42px rgba(29, 53, 111, .10);
+      --radius-xl:30px;
+      --radius-lg:24px;
+      --radius-md:18px;
+      --radius-sm:14px;
+      --max:1280px;
     }
-
     *{box-sizing:border-box}
     html{scroll-behavior:smooth}
     body{
       margin:0;
-      font-family: Inter, "Segoe UI", Arial, sans-serif;
+      font-family:Inter, "Segoe UI", Arial, sans-serif;
       color:var(--text);
       background:
-        radial-gradient(circle at top left, rgba(39,93,246,.10), transparent 22%),
-        radial-gradient(circle at top right, rgba(109,94,252,.10), transparent 20%),
-        linear-gradient(180deg, #f8fbff 0%, #f3f7fd 100%);
+        radial-gradient(circle at top left, rgba(36,87,245,.08), transparent 22%),
+        radial-gradient(circle at top right, rgba(107,97,255,.08), transparent 22%),
+        linear-gradient(180deg,#f9fbff 0%, #f3f7fe 100%);
     }
+    img{display:block;max-width:100%}
     a{text-decoration:none;color:inherit}
-    button,input,select,textarea{font:inherit}
-
+    button,input,select{font:inherit}
     .topbar{
-      position:sticky;
-      top:0;
-      z-index:50;
-      backdrop-filter: blur(16px);
-      background:rgba(248,251,255,.85);
+      position:sticky; top:0; z-index:100;
+      background:rgba(248,251,255,.88);
+      backdrop-filter: blur(14px);
       border-bottom:1px solid rgba(16,33,58,.06);
     }
     .topbar-inner{
       max-width:var(--max);
       margin:0 auto;
+      padding:14px 20px;
       display:flex;
       align-items:center;
       justify-content:space-between;
       gap:18px;
-      padding:14px 20px;
     }
-    .brand{
-      display:flex;
-      align-items:center;
-      gap:14px;
-      min-width:0;
-    }
+    .brand{display:flex;align-items:center;gap:14px;min-width:0}
     .brand-mark{
-      width:48px;height:48px;border-radius:16px;
-      background:linear-gradient(135deg,var(--primary),var(--primary-2));
-      color:#fff;
+      width:52px;height:52px;border-radius:18px;
+      background:linear-gradient(135deg,var(--primary),var(--primary2));
+      color:#fff;font-weight:900;font-size:20px;
       display:grid;place-items:center;
-      font-weight:800;font-size:20px;
-      box-shadow:0 14px 30px rgba(39,93,246,.22);
+      box-shadow:0 16px 30px rgba(36,87,245,.24);
+      flex-shrink:0;
     }
-    .brand h1{
-      margin:0;
-      font-size:1rem;
-      line-height:1.1;
-    }
-    .brand p{
-      margin:3px 0 0;
-      color:var(--muted);
-      font-size:.88rem;
-    }
-
-    .nav{
-      display:flex;
-      gap:8px;
-      flex-wrap:wrap;
-      justify-content:flex-end;
-    }
+    .brand h1{margin:0;font-size:1rem;line-height:1.1}
+    .brand p{margin:4px 0 0;color:var(--muted);font-size:.88rem}
+    .nav{display:flex;gap:8px;flex-wrap:wrap;justify-content:flex-end}
     .nav a{
-      padding:10px 14px;
-      border-radius:999px;
-      color:var(--muted);
-      font-weight:600;
-      transition:.2s ease;
+      padding:10px 14px;border-radius:999px;
+      color:var(--muted);font-weight:700;transition:.2s ease;
     }
-    .nav a:hover{
-      color:var(--primary);
-      background:rgba(39,93,246,.07);
-    }
-
-    .wrap{
-      max-width:var(--max);
-      margin:0 auto;
-      padding:24px 20px 52px;
-    }
-
+    .nav a:hover{background:rgba(36,87,245,.07);color:var(--primary)}
+    .wrap{max-width:var(--max);margin:0 auto;padding:24px 20px 52px}
     .hero{
-      display:grid;
-      grid-template-columns:1.18fr .82fr;
-      gap:22px;
-      align-items:stretch;
-      margin-top:10px;
+      display:grid;grid-template-columns:1.1fr .9fr;gap:22px;align-items:stretch;
     }
-    .hero-main,.hero-side,.section,.summary-card,.week-card,.tool-card,.assessment-card,.deliverable-card,.day-card,.note-card{
+    .panel,.hero-main,.hero-side,.stat,.week-card,.day-card,.tool-card,.assessment-card,.deliverable-card,.mini-card{
       background:var(--card);
       border:1px solid rgba(16,33,58,.06);
       box-shadow:var(--shadow);
     }
-    .hero-main{
-      padding:34px;
+    .hero-main,.hero-side,.panel{
       border-radius:var(--radius-xl);
-      position:relative;
-      overflow:hidden;
+      padding:30px;
+    }
+    .hero-main{
       background:
-        radial-gradient(circle at 100% 0, rgba(109,94,252,.13), transparent 32%),
-        linear-gradient(135deg, rgba(39,93,246,.05), rgba(109,94,252,.04)),
+        radial-gradient(circle at 100% 0, rgba(107,97,255,.12), transparent 28%),
+        radial-gradient(circle at 0% 100%, rgba(36,87,245,.10), transparent 26%),
         #fff;
+      position:relative; overflow:hidden;
     }
-    .hero-badge{
-      display:inline-flex;
-      align-items:center;
-      gap:8px;
-      padding:9px 14px;
-      border-radius:999px;
-      background:#eef3ff;
-      color:var(--primary);
-      font-size:.78rem;
-      font-weight:800;
-      letter-spacing:.08em;
-      text-transform:uppercase;
+    .hero-kicker,.eyebrow{
+      display:inline-flex;align-items:center;gap:8px;
+      padding:9px 14px;border-radius:999px;
+      background:#eef3ff;color:var(--primary);
+      font-size:.78rem;font-weight:900;letter-spacing:.08em;text-transform:uppercase;
     }
-    .hero h2{
+    .hero-main h2{
       margin:18px 0 12px;
-      font-size:clamp(2rem, 3.8vw, 3.6rem);
-      line-height:1.02;
-      letter-spacing:-.03em;
+      font-size:clamp(2.1rem,3.6vw,3.8rem);
+      line-height:1.02;letter-spacing:-.04em;
     }
-    .hero p{
-      margin:0 0 22px;
-      font-size:1rem;
-      line-height:1.72;
-      color:var(--muted);
-      max-width:62ch;
+    .hero-main p{
+      margin:0 0 22px;max-width:64ch;
+      color:var(--muted);line-height:1.75;font-size:1rem;
     }
-    .hero-actions{
-      display:flex;
-      flex-wrap:wrap;
-      gap:12px;
-      margin-bottom:18px;
-    }
+    .hero-actions{display:flex;gap:12px;flex-wrap:wrap;margin-bottom:18px}
     .btn{
-      border:none;
-      cursor:pointer;
-      transition:.2s ease;
-      border-radius:14px;
-      padding:13px 18px;
-      font-weight:800;
+      border:none;cursor:pointer;border-radius:15px;padding:13px 18px;
+      font-weight:800;transition:.2s ease;
     }
     .btn:hover{transform:translateY(-1px)}
     .btn-primary{
-      color:#fff;
-      background:linear-gradient(135deg,var(--primary),var(--primary-2));
-      box-shadow:0 14px 30px rgba(39,93,246,.22);
+      color:#fff;background:linear-gradient(135deg,var(--primary),var(--primary2));
+      box-shadow:0 14px 28px rgba(36,87,245,.22);
     }
     .btn-secondary{
-      color:var(--text);
-      background:#fff;
-      border:1px solid var(--line);
+      color:var(--text);background:#fff;border:1px solid var(--line);
     }
-    .hero-points{
-      display:grid;
-      gap:12px;
-      margin-top:22px;
-    }
+    .hero-points{display:grid;gap:12px;margin-top:22px}
     .hero-point{
-      display:flex;
-      gap:12px;
-      align-items:flex-start;
-      color:var(--muted);
-      line-height:1.55;
+      display:flex;align-items:flex-start;gap:12px;
+      color:var(--muted);line-height:1.62;
     }
     .hero-point strong{color:var(--text)}
-    .hero-side{
-      border-radius:var(--radius-xl);
-      padding:24px;
-      display:grid;
-      gap:16px;
-    }
-    .hero-side h3,.section-title h3{margin:0;font-size:1.2rem}
-    .hero-side p,.section-title p{margin:6px 0 0;color:var(--muted);line-height:1.65}
+    .hero-side{display:grid;gap:16px}
+    .hero-side h3,.section-title h3{margin:0;font-size:1.24rem}
+    .hero-side p,.section-title p,.muted{margin:0;color:var(--muted);line-height:1.68}
     .mini-list{display:grid;gap:12px}
-    .mini-item{
-      padding:16px;
-      border-radius:18px;
-      background:#f8faff;
-      border:1px solid var(--line);
+    .mini-card{
+      border-radius:20px;padding:18px;background:#f8fbff;
     }
-    .mini-item strong{display:block;margin-bottom:4px}
-    .mini-item span{color:var(--muted);font-size:.95rem;line-height:1.55}
-
+    .mini-card strong{display:block;margin-bottom:6px}
     .stats{
-      display:grid;
-      grid-template-columns:repeat(4, minmax(0,1fr));
-      gap:18px;
-      margin-top:22px;
+      margin-top:22px;display:grid;grid-template-columns:repeat(4,minmax(0,1fr));gap:18px;
     }
-    .summary-card{
-      border-radius:20px;
-      padding:22px;
+    .stat{border-radius:22px;padding:22px}
+    .stat .kicker{
+      color:var(--muted);font-size:.8rem;font-weight:900;letter-spacing:.09em;text-transform:uppercase;
     }
-    .summary-card .kicker{
-      color:var(--muted);
-      font-size:.82rem;
-      text-transform:uppercase;
-      letter-spacing:.08em;
-      font-weight:800;
-    }
-    .summary-card .value{
-      font-size:2rem;
-      font-weight:800;
-      margin-top:10px;
-      letter-spacing:-.03em;
-    }
-    .summary-card .label{
-      margin-top:8px;
-      color:var(--muted);
-      line-height:1.6;
-    }
-
-    .section{
-      border-radius:var(--radius-xl);
-      padding:30px;
-      margin-top:22px;
-    }
+    .stat .value{font-size:2rem;font-weight:900;margin-top:10px;letter-spacing:-.03em}
+    .stat .label{color:var(--muted);margin-top:8px;line-height:1.62}
+    .section{margin-top:22px}
+    .panel{padding:30px}
     .section-title{
-      display:flex;
-      align-items:end;
-      justify-content:space-between;
-      gap:18px;
-      margin-bottom:20px;
-      flex-wrap:wrap;
+      display:flex;align-items:end;justify-content:space-between;gap:16px;
+      flex-wrap:wrap;margin-bottom:22px;
     }
-    .eyebrow{
-      color:var(--primary);
-      font-size:.78rem;
-      text-transform:uppercase;
-      letter-spacing:.1em;
-      font-weight:800;
-      margin-bottom:6px;
-    }
-
     .grid-3{display:grid;grid-template-columns:repeat(3,minmax(0,1fr));gap:18px}
     .grid-2{display:grid;grid-template-columns:repeat(2,minmax(0,1fr));gap:18px}
-
-    .note-card{
-      border-radius:22px;
-      padding:24px;
-      background:linear-gradient(180deg, #ffffff, #fbfdff);
-    }
-    .note-card h4{
-      margin:0 0 10px;
-      font-size:1.08rem;
-    }
-    .note-card p{
-      margin:0;
-      color:var(--muted);
-      line-height:1.7;
-    }
-
-    .roadmap{
-      display:grid;
-      grid-template-columns:repeat(3,minmax(0,1fr));
-      gap:18px;
+    .roadmap-grid{
+      display:grid;grid-template-columns:repeat(3,minmax(0,1fr));gap:18px;
     }
     .week-card{
-      border-radius:24px;
-      padding:24px;
-      position:relative;
-      overflow:hidden;
+      border-radius:24px;padding:24px;
       background:
-        radial-gradient(circle at 100% 0, rgba(39,93,246,.07), transparent 26%),
+        radial-gradient(circle at 100% 0, rgba(36,87,245,.08), transparent 28%),
         #fff;
     }
-    .week-number{
-      display:inline-flex;
-      align-items:center;
-      justify-content:center;
-      width:42px;height:42px;
-      border-radius:14px;
-      background:#eef3ff;
-      color:var(--primary);
-      font-weight:800;
-      margin-bottom:16px;
+    .week-badge{
+      width:46px;height:46px;border-radius:15px;
+      display:grid;place-items:center;font-weight:900;
+      background:#eef3ff;color:var(--primary);margin-bottom:16px;
     }
-    .week-card h4{
-      margin:0 0 8px;
-      font-size:1.18rem;
+    .week-card h4{margin:0 0 8px;font-size:1.15rem}
+    .week-card p{margin:0;color:var(--muted);line-height:1.65}
+    .tag-list,.small-tags,.tool-chip-list{
+      display:flex;flex-wrap:wrap;gap:9px;margin-top:14px;
     }
-    .week-card .theme{
-      color:var(--muted);
-      margin-bottom:16px;
-      line-height:1.62;
+    .tag,.small-tag,.tool-chip{
+      padding:8px 11px;border-radius:999px;background:#f3f7ff;
+      color:var(--primary);font-size:.84rem;font-weight:800;
     }
-    .week-goal{
-      padding:14px 16px;
-      border-radius:16px;
-      background:#f8faff;
-      border:1px solid var(--line);
-      color:var(--muted);
-      line-height:1.6;
-      margin-bottom:16px;
+    .week-tabs,.tool-filters{
+      display:flex;gap:10px;flex-wrap:wrap;
     }
-    .tag-list{
-      display:flex;
-      flex-wrap:wrap;
-      gap:10px;
-      margin-top:14px;
+    .week-tab,.tool-filter{
+      border:none;cursor:pointer;padding:12px 16px;border-radius:999px;
+      background:#f2f6fb;color:var(--muted);font-weight:800;transition:.2s ease;
     }
-    .tag{
-      padding:8px 11px;
-      border-radius:999px;
-      background:#f2f6ff;
-      color:var(--primary);
-      font-weight:700;
-      font-size:.84rem;
+    .week-tab.active,.tool-filter.active{
+      background:linear-gradient(135deg,var(--primary),var(--primary2));
+      color:#fff;box-shadow:0 12px 24px rgba(36,87,245,.18);
     }
-
-    .week-tabs{
-      display:flex;
-      flex-wrap:wrap;
-      gap:10px;
-      margin-bottom:20px;
-    }
-    .week-tab{
-      border:none;
-      cursor:pointer;
-      padding:12px 16px;
-      border-radius:999px;
-      background:#f2f5fb;
-      color:var(--muted);
-      font-weight:800;
-      transition:.2s ease;
-    }
-    .week-tab.active{
-      background:linear-gradient(135deg,var(--primary),var(--primary-2));
-      color:#fff;
-      box-shadow:0 12px 24px rgba(39,93,246,.18);
-    }
-    .days-grid{
-      display:grid;
-      grid-template-columns:repeat(2,minmax(0,1fr));
-      gap:18px;
-    }
-    .day-card{
-      border-radius:22px;
-      padding:22px;
-    }
+    .days-grid{display:grid;grid-template-columns:repeat(2,minmax(0,1fr));gap:18px;margin-top:20px}
+    .day-card{border-radius:24px;padding:24px}
     .day-top{
-      display:flex;
-      align-items:flex-start;
-      justify-content:space-between;
-      gap:12px;
-      margin-bottom:12px;
+      display:flex;align-items:start;justify-content:space-between;gap:12px;margin-bottom:12px;
     }
     .day-pill{
-      background:#eef3ff;
-      color:var(--primary);
-      border-radius:999px;
-      padding:7px 11px;
-      font-size:.82rem;
-      font-weight:800;
-      white-space:nowrap;
+      padding:7px 12px;border-radius:999px;background:#eef3ff;color:var(--primary);
+      font-size:.82rem;font-weight:900;
     }
-    .day-card h5{
-      margin:0;
-      font-size:1.05rem;
-      line-height:1.35;
+    .output-pill{
+      padding:8px 12px;border-radius:999px;background:#f8fbff;border:1px solid var(--line);
+      color:var(--muted);font-size:.82rem;font-weight:800;
     }
-    .muted{
-      color:var(--muted);
-      line-height:1.65;
-    }
-    .label{
-      font-size:.8rem;
-      font-weight:800;
+    .day-card h5{margin:0;font-size:1.1rem;line-height:1.35}
+    .day-card p{margin:8px 0 0;color:var(--muted);line-height:1.65}
+    .subheading{
+      margin:16px 0 8px;font-size:.82rem;font-weight:900;letter-spacing:.08em;text-transform:uppercase;
       color:var(--text);
-      letter-spacing:.04em;
-      text-transform:uppercase;
-      margin:14px 0 8px;
     }
     ul.clean{
-      margin:0;
-      padding-left:18px;
-      color:var(--muted);
-      line-height:1.62;
+      margin:0;padding-left:18px;color:var(--muted);line-height:1.62;
     }
-    .small-tags{
-      display:flex;
-      flex-wrap:wrap;
-      gap:8px;
-      margin-top:14px;
+    .day-learn-grid{display:grid;grid-template-columns:1fr 1fr;gap:14px}
+    .learn-box{
+      border:1px solid var(--line);border-radius:18px;padding:14px;background:#f8fbff;
     }
-    .small-tag{
-      padding:7px 10px;
-      border-radius:999px;
-      background:#f8faff;
-      border:1px solid var(--line);
-      color:var(--muted);
-      font-size:.82rem;
-      font-weight:700;
+    .learn-box strong{display:block;font-size:.85rem;text-transform:uppercase;letter-spacing:.05em;margin-bottom:8px}
+    .tool-layout{
+      display:grid;grid-template-columns:310px 1fr;gap:18px;align-items:start;
     }
-
-    .tools-grid{
-      display:grid;
-      grid-template-columns:repeat(3,minmax(0,1fr));
-      gap:18px;
+    .tool-side{
+      border:1px solid var(--line);border-radius:22px;padding:18px;background:#f8fbff;
+      position:sticky;top:96px;
+    }
+    .tool-search{
+      width:100%;padding:13px 14px;border-radius:14px;border:1px solid var(--line);
+      background:#fff;color:var(--text);outline:none;margin:14px 0;
+    }
+    .tool-helper{
+      font-size:.92rem;color:var(--muted);line-height:1.6;
+    }
+    .tool-grid{
+      display:grid;grid-template-columns:repeat(3,minmax(0,1fr));gap:18px;
     }
     .tool-card{
-      border-radius:22px;
-      padding:22px;
+      border-radius:24px;padding:20px;cursor:pointer;transition:.2s ease;
+      position:relative;overflow:hidden;
     }
-    .tool-card h4{
-      margin:0 0 8px;
-      font-size:1.05rem;
+    .tool-card:hover{transform:translateY(-2px)}
+    .tool-card::before{
+      content:"";position:absolute;inset:0 0 auto 0;height:4px;background:var(--brand,#2457f5);
     }
-    .tool-card p{
-      margin:0 0 14px;
-      color:var(--muted);
-      line-height:1.62;
+    .tool-head{
+      display:flex;align-items:center;justify-content:space-between;gap:12px;margin-bottom:14px;
     }
-
+    .tool-icon{
+      width:54px;height:54px;border-radius:16px;background:#fff;border:1px solid rgba(0,0,0,.05);
+      display:grid;place-items:center;box-shadow:0 10px 20px rgba(0,0,0,.04);
+      overflow:hidden;flex-shrink:0;
+    }
+    .tool-icon img{width:32px;height:32px;object-fit:contain}
+    .tool-card h4{margin:0;font-size:1.02rem}
+    .tool-meta{
+      font-size:.82rem;font-weight:800;color:var(--brand,#2457f5);
+      text-transform:uppercase;letter-spacing:.08em;
+    }
+    .tool-card p{margin:10px 0 0;color:var(--muted);line-height:1.58}
+    .tool-uses{
+      margin-top:12px;display:flex;flex-wrap:wrap;gap:8px;
+    }
+    .tool-use{
+      padding:7px 10px;border-radius:999px;background:#f8fbff;border:1px solid var(--line);
+      color:var(--muted);font-size:.8rem;font-weight:800;
+    }
     .assessment-layout{
-      display:grid;
-      grid-template-columns:1.02fr .98fr;
-      gap:18px;
+      display:grid;grid-template-columns:1.02fr .98fr;gap:18px;
     }
-    .assessment-card{
-      border-radius:22px;
-      padding:24px;
-    }
-    .score-grid{
-      display:grid;
-      grid-template-columns:repeat(3,minmax(0,1fr));
-      gap:14px;
-      margin-top:14px;
-    }
+    .assessment-card{border-radius:24px;padding:24px}
+    .score-grid{display:grid;grid-template-columns:repeat(3,minmax(0,1fr));gap:14px;margin-top:14px}
     .score-band{
-      padding:16px;
-      border-radius:18px;
-      background:#f8faff;
-      border:1px solid var(--line);
+      border:1px solid var(--line);border-radius:18px;padding:16px;background:#f8fbff;
     }
-    .score-band strong{
-      display:block;
-      font-size:1.05rem;
-      margin-bottom:6px;
-    }
-    .score-band span{
-      color:var(--muted);
-      line-height:1.58;
-      font-size:.94rem;
-    }
-    .focus-list{
-      display:grid;
-      grid-template-columns:repeat(2,minmax(0,1fr));
-      gap:12px;
-      margin-top:14px;
-    }
+    .score-band strong{display:block;font-size:1.05rem;margin-bottom:6px}
+    .score-band span{color:var(--muted);line-height:1.56}
+    .focus-list{display:grid;grid-template-columns:repeat(2,minmax(0,1fr));gap:12px;margin-top:14px}
     .focus-item{
-      padding:14px 16px;
-      border-radius:16px;
-      background:#f8faff;
-      border:1px solid var(--line);
-      color:var(--muted);
-      font-weight:700;
+      border:1px solid var(--line);border-radius:18px;padding:15px;background:#f8fbff;color:var(--muted);line-height:1.58;
     }
-    .focus-item strong{display:block;color:var(--text);margin-bottom:4px}
-
-    .deliverables{
-      display:grid;
-      grid-template-columns:repeat(4,minmax(0,1fr));
-      gap:18px;
-    }
-    .deliverable-card{
-      border-radius:22px;
-      padding:22px;
-    }
-    .deliverable-card h4{
-      margin:0 0 8px;
-      font-size:1rem;
-    }
-    .deliverable-card p{
-      margin:0;
-      color:var(--muted);
-      line-height:1.65;
-    }
-
-    .presenter-grid{
-      display:grid;
-      grid-template-columns:1.05fr .95fr;
-      gap:18px;
-      align-items:start;
-    }
-    .talk-list{
-      display:grid;
-      gap:12px;
-      margin-top:14px;
-    }
-    .talk-item{
-      padding:16px;
-      border-radius:18px;
-      background:#f8faff;
-      border:1px solid var(--line);
-      color:var(--muted);
-      line-height:1.6;
-    }
-    .talk-item strong{display:block;color:var(--text);margin-bottom:4px}
-
+    .focus-item strong{display:block;color:var(--text);margin-bottom:6px}
+    .deliverables{display:grid;grid-template-columns:repeat(4,minmax(0,1fr));gap:18px}
+    .deliverable-card{border-radius:24px;padding:22px}
+    .deliverable-card h4{margin:0 0 8px;font-size:1rem}
+    .deliverable-card p{margin:0;color:var(--muted);line-height:1.65}
     .footer{
-      color:var(--muted);
-      text-align:center;
-      padding:28px 18px 42px;
-      font-size:.95rem;
+      padding:30px 20px 48px;color:var(--muted);text-align:center;font-size:.94rem;
     }
 
-    .print-note{
-      display:inline-flex;
-      margin-top:10px;
-      color:var(--muted);
-      font-size:.9rem;
-      padding:10px 12px;
-      border-radius:999px;
-      background:#f7f9fd;
-      border:1px solid var(--line);
+    .modal{
+      position:fixed;inset:0;background:rgba(7,17,37,.58);display:none;align-items:center;justify-content:center;
+      padding:18px;z-index:150;
+    }
+    .modal.open{display:flex}
+    .modal-card{
+      width:min(920px, 100%);max-height:90vh;overflow:auto;
+      background:#fff;border-radius:28px;border:1px solid rgba(16,33,58,.08);
+      box-shadow:0 28px 80px rgba(0,0,0,.22);
+    }
+    .modal-header{
+      padding:24px 24px 10px;border-bottom:1px solid rgba(16,33,58,.06);
+      background:
+        radial-gradient(circle at top right, color-mix(in srgb, var(--modalBrand,#2457f5) 16%, white) 0%, transparent 28%),
+        #fff;
+    }
+    .modal-top{
+      display:flex;align-items:flex-start;justify-content:space-between;gap:16px;
+    }
+    .modal-brand{
+      display:flex;align-items:center;gap:16px;
+    }
+    .modal-brand .tool-icon{width:64px;height:64px;border-radius:20px}
+    .modal-header h3{margin:0;font-size:1.45rem}
+    .modal-header p{margin:6px 0 0;color:var(--muted);line-height:1.64}
+    .close-btn{
+      width:42px;height:42px;border:none;border-radius:14px;cursor:pointer;
+      background:#f3f6fb;color:var(--text);font-size:1.1rem;font-weight:900;
+    }
+    .modal-body{padding:24px}
+    .modal-grid{display:grid;grid-template-columns:1fr 1fr;gap:18px}
+    .info-box{
+      border:1px solid var(--line);border-radius:20px;padding:18px;background:#f8fbff;
+    }
+    .info-box h4{margin:0 0 8px;font-size:1rem}
+    .info-box p{margin:0;color:var(--muted);line-height:1.64}
+    .info-box ul{margin:0;padding-left:18px;color:var(--muted);line-height:1.62}
+    .suite-list{display:flex;flex-wrap:wrap;gap:8px;margin-top:10px}
+    .suite-chip{
+      padding:8px 11px;border-radius:999px;background:#fff;border:1px solid var(--line);
+      color:var(--muted);font-size:.82rem;font-weight:800;
     }
 
-    @media (max-width:1080px){
-      .hero,.assessment-layout,.presenter-grid,.grid-2,.roadmap,.tools-grid,.deliverables,.stats,.days-grid{
-        grid-template-columns:1fr 1fr;
-      }
-      .grid-3{grid-template-columns:1fr 1fr}
+    @media (max-width:1180px){
+      .hero,.tool-layout,.assessment-layout,.roadmap-grid,.deliverables,.stats,.grid-3,.grid-2,.days-grid,.tool-grid{grid-template-columns:1fr 1fr}
+      .tool-layout{grid-template-columns:1fr}
+      .tool-side{position:static}
     }
-    @media (max-width:800px){
-      .topbar-inner{align-items:flex-start}
+    @media (max-width:860px){
       .nav{display:none}
-      .hero,.assessment-layout,.presenter-grid,.grid-2,.roadmap,.tools-grid,.deliverables,.stats,.days-grid,.grid-3,.focus-list{
+      .hero,.roadmap-grid,.deliverables,.stats,.grid-3,.grid-2,.days-grid,.tool-grid,.assessment-layout,.focus-list,.day-learn-grid,.modal-grid{
         grid-template-columns:1fr;
       }
-      .section,.hero-main,.hero-side{padding:22px}
-      .wrap{padding:18px 14px 38px}
-      .hero h2{font-size:2rem}
+      .wrap{padding:18px 14px 36px}
+      .hero-main,.hero-side,.panel{padding:22px}
+      .hero-main h2{font-size:2.1rem}
     }
     @media print{
-      .topbar,.hero-actions{display:none !important}
+      .topbar,.hero-actions,.tool-side,.modal{display:none !important}
       body{background:#fff}
       .wrap{max-width:none;padding:0}
-      .section,.hero-main,.hero-side,.summary-card,.week-card,.tool-card,.assessment-card,.deliverable-card,.day-card,.note-card{
-        box-shadow:none;
-        border:1px solid #d9e2f0;
-        break-inside:avoid;
+      .panel,.hero-main,.hero-side,.stat,.week-card,.day-card,.tool-card,.assessment-card,.deliverable-card,.mini-card{
+        box-shadow:none;border:1px solid #d7dfec;break-inside:avoid;
       }
       .section{margin-top:14px}
-      a{color:inherit}
     }
   </style>
 </head>
@@ -581,16 +355,16 @@
         <div class="brand-mark">EA</div>
         <div>
           <h1>Executive Assistant Training System</h1>
-          <p>Organized team presentation website • 3-week rollout</p>
+          <p>Branded presentation website • clear Day 1 to Day 15 learning path</p>
         </div>
       </div>
       <nav class="nav">
         <a href="#snapshot">Snapshot</a>
         <a href="#roadmap">Roadmap</a>
-        <a href="#curriculum">Curriculum</a>
-        <a href="#tools">Tools</a>
+        <a href="#curriculum">Day 1–15</a>
+        <a href="#tools">Tool Explorer</a>
         <a href="#assessment">Assessment</a>
-        <a href="#implementation">Implementation</a>
+        <a href="#deliverables">Deliverables</a>
       </nav>
     </div>
   </header>
@@ -598,245 +372,271 @@
   <main class="wrap">
     <section class="hero">
       <div class="hero-main">
-        <div class="hero-badge">Team-ready training proposal</div>
+        <div class="hero-kicker">Presentation-ready training website</div>
         <h2>3-Week Executive Assistant Training Program for CEO and Business Owner Support</h2>
         <p>
-          This presentation website is organized for leadership review. It shows the full EA training structure, the tools used in daily executive support, the assessment model, and the outputs trainees must complete before graduation.
+          This version is reorganized to be easier to present to your team. It now includes a clearer daily learning roadmap from <strong>Day 1 to Day 15</strong>, a branded <strong>Tool Explorer</strong> with recognizable logos and colors, and click-to-open tool details that explain each tool’s purpose and why many Executive Assistants use it in real work.
         </p>
         <div class="hero-actions">
-          <a class="btn btn-primary" href="#roadmap">View 3-Week Roadmap</a>
+          <a class="btn btn-primary" href="#curriculum">View Full Day 1–15 Plan</a>
+          <a class="btn btn-secondary" href="#tools">Explore Tools</a>
           <button class="btn btn-secondary" onclick="window.print()">Print / Save PDF</button>
         </div>
         <div class="hero-points">
-          <div class="hero-point"><span>✔️</span><div><strong>Presentation-first layout:</strong> overview first, details second, execution last.</div></div>
-          <div class="hero-point"><span>✔️</span><div><strong>CEO support focus:</strong> communication, scheduling, follow-through, reporting, and executive judgment.</div></div>
-          <div class="hero-point"><span>✔️</span><div><strong>Practical format:</strong> 15 days of guided training, tool exposure, exercises, and a final capstone simulation.</div></div>
+          <div class="hero-point"><span>✔️</span><div><strong>Clear training journey:</strong> every day now shows what the trainee will learn, practice, and submit.</div></div>
+          <div class="hero-point"><span>✔️</span><div><strong>Tool clarity:</strong> click any tool card to see its purpose, why EAs use it, and where it fits in the program.</div></div>
+          <div class="hero-point"><span>✔️</span><div><strong>Presentation-friendly:</strong> roadmap first, details second, assessment and outputs last.</div></div>
         </div>
       </div>
 
       <aside class="hero-side">
-        <div class="section-title">
+        <div class="section-title" style="margin-bottom:0">
           <div>
-            <div class="eyebrow">What this solves</div>
-            <h3>Why this program is useful for the team</h3>
-            <p>It gives the team a clear training standard for onboarding EAs who will work directly with leaders.</p>
+            <div class="eyebrow">What makes this version better</div>
+            <h3>Cleaner for leadership review</h3>
+            <p>Instead of feeling like a rough training app, this version is arranged like a polished internal proposal website.</p>
           </div>
         </div>
         <div class="mini-list">
-          <div class="mini-item">
-            <strong>Standardized onboarding</strong>
-            <span>Creates one structure for communication, scheduling, task tracking, reporting, and executive support expectations.</span>
-          </div>
-          <div class="mini-item">
-            <strong>Faster readiness</strong>
-            <span>Moves a trainee from basic admin support to proactive executive support through guided practice and scenario work.</span>
-          </div>
-          <div class="mini-item">
-            <strong>Clear pass/fail criteria</strong>
-            <span>Uses a practical assessment model so the team can identify who is ready, who needs coaching, and what skills need reinforcement.</span>
-          </div>
+          <article class="mini-card">
+            <strong>Day-by-day learning structure</strong>
+            <span class="muted">The team can now see exactly what trainees will learn from Day 1 through Day 15 without guessing.</span>
+          </article>
+          <article class="mini-card">
+            <strong>Branded tool section</strong>
+            <span class="muted">The tools area now looks more like real software that EAs use every day, including recognizable app logos and brand styling.</span>
+          </article>
+          <article class="mini-card">
+            <strong>Faster team understanding</strong>
+            <span class="muted">The layout helps your team review the training goals, tool stack, evaluation method, and final outputs in one place.</span>
+          </article>
         </div>
       </aside>
     </section>
 
     <section class="stats" id="snapshot">
-      <div class="summary-card">
+      <div class="stat">
         <div class="kicker">Program Length</div>
         <div class="value" id="statWeeks">3 Weeks</div>
-        <div class="label">Structured into weekly themes with guided daily practice.</div>
+        <div class="label">Three themed weeks that move from foundation to advanced executive support.</div>
       </div>
-      <div class="summary-card">
+      <div class="stat">
         <div class="kicker">Training Days</div>
         <div class="value" id="statDays">15 Days</div>
-        <div class="label">Each day includes a lesson objective, trainer script, activities, and homework.</div>
+        <div class="label">Fifteen guided sessions with clear lessons, practice, and outputs.</div>
       </div>
-      <div class="summary-card">
-        <div class="kicker">Tool Groups</div>
-        <div class="value" id="statTools">9 Groups</div>
-        <div class="label">Covers email, calendar, communication, reporting, CRM, automation, and presentation tools.</div>
+      <div class="stat">
+        <div class="kicker">Tools Included</div>
+        <div class="value" id="statTools">0</div>
+        <div class="label">Includes the common tools EAs use for communication, scheduling, files, CRM, and reporting.</div>
       </div>
-      <div class="summary-card">
-        <div class="kicker">Final Gate</div>
-        <div class="value" id="statAssessment">Capstone</div>
-        <div class="label">Final simulation plus pass/fail scoring to confirm training readiness.</div>
-      </div>
-    </section>
-
-    <section class="section" id="overview">
-      <div class="section-title">
-        <div>
-          <div class="eyebrow">Executive summary</div>
-          <h3>What the team can expect from this training</h3>
-          <p>The program is designed to produce an EA who can protect a leader’s time, communicate professionally, keep work organized, and support operations without constant direction.</p>
-        </div>
-      </div>
-
-      <div class="grid-3">
-        <article class="note-card">
-          <h4>Week 1 outcome</h4>
-          <p>The trainee learns executive communication, inbox triage, scheduling discipline, professionalism, and the core tools used in daily support.</p>
-        </article>
-        <article class="note-card">
-          <h4>Week 2 outcome</h4>
-          <p>The trainee develops stronger follow-through through task management, meeting support, documents, reporting, and workflow efficiency.</p>
-        </article>
-        <article class="note-card">
-          <h4>Week 3 outcome</h4>
-          <p>The trainee advances into higher-level support through travel planning, CRM work, executive thinking, decision support, and capstone execution.</p>
-        </article>
-      </div>
-      <div class="print-note">Tip for presenting: start with the roadmap, then use the daily curriculum section only if the team wants full detail.</div>
-    </section>
-
-    <section class="section" id="roadmap">
-      <div class="section-title">
-        <div>
-          <div class="eyebrow">3-week structure</div>
-          <h3>High-level roadmap for leadership review</h3>
-          <p>This view keeps the program simple for a team meeting while still showing the full intention of each week.</p>
-        </div>
-      </div>
-      <div class="roadmap" id="roadmapGrid"></div>
-    </section>
-
-    <section class="section" id="curriculum">
-      <div class="section-title">
-        <div>
-          <div class="eyebrow">Detailed curriculum</div>
-          <h3>Organized daily breakdown</h3>
-          <p>Use the week filters below to present the lesson flow, activities, homework, and required outputs.</p>
-        </div>
-      </div>
-      <div class="week-tabs" id="weekTabs"></div>
-      <div class="days-grid" id="daysGrid"></div>
-    </section>
-
-    <section class="section" id="tools">
-      <div class="section-title">
-        <div>
-          <div class="eyebrow">Daily tool stack</div>
-          <h3>Common tools used in executive support</h3>
-          <p>The tools are grouped by function so the team can quickly see what a new EA needs to learn in practice.</p>
-        </div>
-      </div>
-      <div class="tools-grid" id="toolsGrid"></div>
-    </section>
-
-    <section class="section" id="assessment">
-      <div class="section-title">
-        <div>
-          <div class="eyebrow">Assessment model</div>
-          <h3>How the trainee is evaluated</h3>
-          <p>The assessment is designed to measure real executive support judgment, not only memorization.</p>
-        </div>
-      </div>
-      <div class="assessment-layout">
-        <article class="assessment-card">
-          <h4 style="margin:0 0 8px;">Pass / fail scoring guide</h4>
-          <p class="muted">This grading structure helps the team decide whether the trainee is ready for live executive support, ready with coaching, or needs retraining.</p>
-          <div class="score-grid">
-            <div class="score-band">
-              <strong>85%–100%</strong>
-              <span><b style="color:var(--success)">Ready to Deploy</b><br>Strong judgment, communication, and execution across the core scenarios.</span>
-            </div>
-            <div class="score-band">
-              <strong>70%–84%</strong>
-              <span><b style="color:var(--warning)">Needs Coaching</b><br>Promising performance, but needs reinforcement in specific weak areas before full exposure.</span>
-            </div>
-            <div class="score-band">
-              <strong>Below 70%</strong>
-              <span><b style="color:var(--danger)">Retraining Needed</b><br>Should repeat key modules before handling independent executive support.</span>
-            </div>
-          </div>
-        </article>
-
-        <article class="assessment-card">
-          <h4 style="margin:0 0 8px;">Skills assessed in the final stage</h4>
-          <p class="muted">The final stage checks both operational discipline and executive-level thinking.</p>
-          <div class="focus-list" id="focusList"></div>
-        </article>
-      </div>
-    </section>
-
-    <section class="section" id="implementation">
-      <div class="section-title">
-        <div>
-          <div class="eyebrow">Outputs and rollout</div>
-          <h3>Deliverables the team can review</h3>
-          <p>These outputs make the training visible and measurable for supervisors, trainers, and leadership.</p>
-        </div>
-      </div>
-      <div class="deliverables">
-        <article class="deliverable-card">
-          <h4>Inbox organization sample</h4>
-          <p>Shows whether the trainee can triage messages, draft replies, and highlight only what truly needs executive attention.</p>
-        </article>
-        <article class="deliverable-card">
-          <h4>Executive calendar plan</h4>
-          <p>Demonstrates scheduling logic, meeting buffers, focus blocks, conflict handling, and good time protection practices.</p>
-        </article>
-        <article class="deliverable-card">
-          <h4>Meeting and reporting outputs</h4>
-          <p>Includes agenda creation, meeting recaps, action tracking, and a clean weekly executive update format.</p>
-        </article>
-        <article class="deliverable-card">
-          <h4>Final capstone package</h4>
-          <p>Combines inbox triage, scheduling, coordination, communication, and reporting into one end-to-end CEO support simulation.</p>
-        </article>
+      <div class="stat">
+        <div class="kicker">Final Readiness Gate</div>
+        <div class="value">Capstone</div>
+        <div class="label">The training ends with a realistic CEO-support simulation and scoring guide.</div>
       </div>
     </section>
 
     <section class="section">
-      <div class="section-title">
-        <div>
-          <div class="eyebrow">Presenter help</div>
-          <h3>Suggested talking points for your team meeting</h3>
-          <p>You can use these to explain the value of the program quickly and clearly.</p>
+      <div class="panel">
+        <div class="section-title">
+          <div>
+            <div class="eyebrow">Executive summary</div>
+            <h3>What the trainee should become after 3 weeks</h3>
+            <p>The goal is to produce an Executive Assistant who can protect executive time, organize priorities, communicate professionally, and support daily business operations with less supervision.</p>
+          </div>
+        </div>
+        <div class="grid-3">
+          <article class="mini-card">
+            <strong>Week 1 outcome</strong>
+            <span class="muted">Build professional communication, email handling, calendar discipline, and core tool familiarity.</span>
+          </article>
+          <article class="mini-card">
+            <strong>Week 2 outcome</strong>
+            <span class="muted">Build operational consistency through tasks, documents, reports, meetings, and workflow efficiency.</span>
+          </article>
+          <article class="mini-card">
+            <strong>Week 3 outcome</strong>
+            <span class="muted">Strengthen higher-level support through travel, CRM, stakeholder coordination, executive thinking, and capstone execution.</span>
+          </article>
         </div>
       </div>
-      <div class="presenter-grid">
-        <article class="assessment-card">
-          <h4 style="margin:0 0 8px;">Simple pitch</h4>
-          <div class="talk-list">
-            <div class="talk-item">
-              <strong>Why we need it</strong>
-              We need a cleaner and more repeatable way to train Executive Assistants who will support CEOs and business owners directly.
-            </div>
-            <div class="talk-item">
-              <strong>What makes it different</strong>
-              This is not just admin training. It teaches executive communication, proactive scheduling, operational follow-through, and decision support.
-            </div>
-            <div class="talk-item">
-              <strong>What the team gets</strong>
-              A full 3-week roadmap, structured exercises, tool alignment, and a measurable final assessment.
-            </div>
-          </div>
-        </article>
+    </section>
 
-        <article class="assessment-card">
-          <h4 style="margin:0 0 8px;">Recommended rollout</h4>
-          <div class="talk-list">
-            <div class="talk-item">
-              <strong>Trainer involvement</strong>
-              One trainer or team lead can facilitate the daily lesson, check outputs, and coach weak areas.
-            </div>
-            <div class="talk-item">
-              <strong>Review cadence</strong>
-              Weekly checkpoints can be used to review progress, confidence level, and readiness for more exposure.
-            </div>
-            <div class="talk-item">
-              <strong>Graduation gate</strong>
-              Only trainees who pass the capstone and demonstrate consistent professionalism should move into live executive support.
-            </div>
+    <section class="section" id="roadmap">
+      <div class="panel">
+        <div class="section-title">
+          <div>
+            <div class="eyebrow">3-week roadmap</div>
+            <h3>High-level structure for the team presentation</h3>
+            <p>This section gives your team a quick view of what each week is trying to achieve before going into the daily breakdown.</p>
           </div>
-        </article>
+        </div>
+        <div class="roadmap-grid" id="roadmapGrid"></div>
+      </div>
+    </section>
+
+    <section class="section" id="curriculum">
+      <div class="panel">
+        <div class="section-title">
+          <div>
+            <div class="eyebrow">Day 1 to Day 15</div>
+            <h3>Clear daily learning path</h3>
+            <p>Each day below shows exactly what the trainee will learn, why it matters, what they will practice, and what output they must submit.</p>
+          </div>
+        </div>
+
+        <div class="week-tabs" id="weekTabs"></div>
+        <div class="days-grid" id="daysGrid"></div>
+      </div>
+    </section>
+
+    <section class="section" id="tools">
+      <div class="panel">
+        <div class="section-title">
+          <div>
+            <div class="eyebrow">Branded tool explorer</div>
+            <h3>Common tools used by Executive Assistants</h3>
+            <p>Click any tool card to open a fuller explanation of its purpose, how EAs use it, what they need to master, and where it appears in the training program.</p>
+          </div>
+        </div>
+
+        <div class="tool-layout">
+          <aside class="tool-side">
+            <div class="eyebrow">Browse tools</div>
+            <h3 style="margin:12px 0 6px">Tool Explorer</h3>
+            <p class="tool-helper">Use the category filters or search by tool name. This section is designed to feel more like the real apps EAs work in every day.</p>
+            <input id="toolSearch" class="tool-search" type="text" placeholder="Search tools like Zoom, Slack, Gmail..." />
+            <div class="tool-filters" id="toolFilters"></div>
+          </aside>
+
+          <div>
+            <div class="tool-grid" id="toolGrid"></div>
+          </div>
+        </div>
+      </div>
+    </section>
+
+    <section class="section" id="assessment">
+      <div class="panel">
+        <div class="section-title">
+          <div>
+            <div class="eyebrow">Assessment model</div>
+            <h3>How readiness is evaluated</h3>
+            <p>The goal is not only to test memorization. The final assessment checks whether the trainee can think, organize, communicate, and execute like a real Executive Assistant.</p>
+          </div>
+        </div>
+
+        <div class="assessment-layout">
+          <article class="assessment-card">
+            <h4 style="margin:0 0 8px">Pass / fail scoring guide</h4>
+            <p class="muted">This guide makes it easier for the team to decide who is ready, who needs more coaching, and who should repeat parts of the training.</p>
+            <div class="score-grid">
+              <div class="score-band">
+                <strong>85%–100%</strong>
+                <span><b style="color:var(--success)">Ready to Deploy</b><br>Strong communication, judgment, scheduling, and follow-through across the key scenarios.</span>
+              </div>
+              <div class="score-band">
+                <strong>70%–84%</strong>
+                <span><b style="color:var(--warning)">Needs Coaching</b><br>Can handle many tasks but still needs reinforcement before full executive exposure.</span>
+              </div>
+              <div class="score-band">
+                <strong>Below 70%</strong>
+                <span><b style="color:var(--danger)">Retraining Needed</b><br>Should repeat key modules before being trusted with independent executive support.</span>
+              </div>
+            </div>
+          </article>
+
+          <article class="assessment-card">
+            <h4 style="margin:0 0 8px">Core skills checked in the final stage</h4>
+            <p class="muted">These are the areas the trainee needs to demonstrate before graduation.</p>
+            <div class="focus-list" id="focusList"></div>
+          </article>
+        </div>
+      </div>
+    </section>
+
+    <section class="section" id="deliverables">
+      <div class="panel">
+        <div class="section-title">
+          <div>
+            <div class="eyebrow">Training outputs</div>
+            <h3>Deliverables the team can review</h3>
+            <p>These outputs help trainers and leaders see whether the trainee understood the training and can apply it in practical work.</p>
+          </div>
+        </div>
+
+        <div class="deliverables">
+          <article class="deliverable-card">
+            <h4>Inbox organization sample</h4>
+            <p>Shows whether the trainee can triage email, draft replies, and elevate only what truly needs executive attention.</p>
+          </article>
+          <article class="deliverable-card">
+            <h4>Executive calendar plan</h4>
+            <p>Demonstrates scheduling judgment, conflict handling, buffers, focus blocks, and time protection.</p>
+          </article>
+          <article class="deliverable-card">
+            <h4>Meeting and reporting outputs</h4>
+            <p>Includes agendas, notes, action tracking, and a simple but useful weekly executive update format.</p>
+          </article>
+          <article class="deliverable-card">
+            <h4>Final capstone package</h4>
+            <p>Combines inbox triage, scheduling, communication, meeting support, and reporting into one realistic CEO-support scenario.</p>
+          </article>
+        </div>
       </div>
     </section>
   </main>
 
   <footer class="footer">
-    Executive Assistant Training System • Organized presentation version for internal team review
+    Executive Assistant Training System • index.html presentation version • designed for internal team review
   </footer>
+
+  <div class="modal" id="toolModal" aria-hidden="true">
+    <div class="modal-card">
+      <div class="modal-header" id="modalHeader">
+        <div class="modal-top">
+          <div class="modal-brand">
+            <div class="tool-icon"><img id="modalIcon" src="" alt="" /></div>
+            <div>
+              <div class="eyebrow" id="modalCategory" style="margin-bottom:8px">Tool</div>
+              <h3 id="modalTitle">Tool Name</h3>
+              <p id="modalSubtitle">Tool purpose</p>
+            </div>
+          </div>
+          <button class="close-btn" id="closeModalBtn" aria-label="Close">✕</button>
+        </div>
+      </div>
+      <div class="modal-body">
+        <div class="modal-grid">
+          <div class="info-box">
+            <h4>Purpose of the tool</h4>
+            <p id="modalPurpose"></p>
+          </div>
+          <div class="info-box">
+            <h4>Why many EAs use it</h4>
+            <p id="modalWhy"></p>
+          </div>
+          <div class="info-box">
+            <h4>Common daily tasks in this tool</h4>
+            <ul id="modalDaily"></ul>
+          </div>
+          <div class="info-box">
+            <h4>What the trainee should learn</h4>
+            <ul id="modalMaster"></ul>
+          </div>
+          <div class="info-box">
+            <h4>Where it appears in the training</h4>
+            <div class="suite-list" id="modalDays"></div>
+          </div>
+          <div class="info-box">
+            <h4>Tool family</h4>
+            <p id="modalFamily"></p>
+          </div>
+        </div>
+      </div>
+    </div>
+  </div>
 
   <script>
     const curriculum = [
@@ -849,435 +649,852 @@
             id: 'w1d1',
             day: 'Day 1',
             title: 'Understanding the EA Role',
-            objective: 'Learn what an Executive Assistant does, how CEOs think, and why proactive support matters.',
-            overview: 'Introduce the EA as a strategic support role, not just a task executor. Explain how the CEO values time, clarity, confidentiality, and initiative.',
-            trainerScript: 'Today we will focus on what separates a high-value Executive Assistant from a basic admin role. A strong EA protects time, reduces noise, organizes priorities, and thinks ahead. Your goal is not only to respond when asked. Your goal is to anticipate what the CEO will need before they ask.',
-            activities: ['Discuss daily responsibilities of an EA', 'Map a CEO’s typical day and pain points', 'Review confidentiality scenarios'],
-            homework: 'Write a one-page summary of how an EA helps a CEO save time and reduce stress.',
-            output: 'Role understanding summary',
+            objective: 'Learn what an Executive Assistant really does and how CEOs and business owners think about time, priorities, and trust.',
+            why: 'A trainee needs to understand that an EA is not just an admin support role. The EA helps reduce noise, protect focus, and keep the leader organized.',
+            learn: [
+              'What makes an Executive Assistant different from a general admin role',
+              'How CEOs and founders usually think about time, urgency, and priorities',
+              'How confidentiality, ownership, and professionalism affect trust',
+              'What “being proactive” looks like in real support work'
+            ],
+            practice: [
+              'Discuss the daily responsibilities of an Executive Assistant',
+              'Map the common pain points of a busy CEO or business owner',
+              'Review short confidentiality scenarios and decide the right response'
+            ],
             tools: ['Gmail', 'Google Calendar', 'Slack'],
-            checklist: ['Read the role overview', 'Join the discussion', 'Submit one-page summary']
+            homework: 'Write a one-page summary explaining how an Executive Assistant helps a CEO save time and reduce stress.',
+            output: 'Role understanding summary'
           },
           {
             id: 'w1d2',
             day: 'Day 2',
             title: 'Professional Communication and Business Etiquette',
-            objective: 'Develop polished communication for email, chat, and meeting interactions.',
-            overview: 'Train the EA to communicate with professionalism, warmth, and accuracy while representing the CEO well.',
-            trainerScript: 'An EA often speaks on behalf of the CEO. That means tone matters. Clear, concise, professional communication builds trust. We avoid overexplaining, emotional responses, and vague language. Your messages should move work forward.',
-            activities: ['Rewrite informal messages professionally', 'Practice short executive email replies', 'Review response time expectations'],
-            homework: 'Draft 5 professional email replies for common executive requests.',
-            output: 'Email etiquette exercise',
-            tools: ['Gmail', 'Outlook', 'Slack', 'Teams'],
-            checklist: ['Complete rewrite exercise', 'Draft 5 emails', 'Review chat etiquette guide']
+            objective: 'Learn how to communicate clearly, politely, and professionally in email, chat, and executive-facing interactions.',
+            why: 'An EA often writes, replies, and follows up on behalf of a leader. Good communication protects the executive’s reputation and keeps work moving.',
+            learn: [
+              'How to write concise and professional email replies',
+              'How to use the right tone in Slack, Teams, and meetings',
+              'What details should always be clear in business communication',
+              'How to avoid vague, emotional, or messy messages'
+            ],
+            practice: [
+              'Rewrite informal or weak business messages',
+              'Draft short professional responses for common executive requests',
+              'Review chat etiquette for internal and external communication'
+            ],
+            tools: ['Gmail', 'Outlook', 'Slack', 'Microsoft Teams'],
+            homework: 'Draft five executive-style replies for common requests such as rescheduling, follow-up, or status update messages.',
+            output: 'Email etiquette exercise'
           },
           {
             id: 'w1d3',
             day: 'Day 3',
             title: 'Inbox Management',
-            objective: 'Learn inbox triage, prioritization, filtering, and drafting replies.',
-            overview: 'Teach the trainee how to classify urgent, important, informational, and delegate-able messages while preserving executive focus.',
-            trainerScript: 'The inbox is often the front door to the business. A strong EA does not just read emails. They sort, prioritize, flag actions, and turn the inbox into a system. The goal is to create visibility without overwhelming the CEO.',
-            activities: ['Practice inbox triage with 20 sample emails', 'Create labels and folders', 'Identify which replies can be drafted without escalation'],
-            homework: 'Organize a sample inbox and explain the system used.',
-            output: 'Organized inbox sample',
+            objective: 'Learn inbox triage, prioritization, follow-up logic, and when to draft versus escalate.',
+            why: 'The inbox is one of the most important places where an EA protects executive attention. It should become a system, not a pile of unread messages.',
+            learn: [
+              'How to identify urgent, important, informational, and low-value emails',
+              'How labels, folders, flags, and stars help manage visibility',
+              'When an EA can draft a response without needing the CEO',
+              'How to summarize inbox activity without overwhelming the executive'
+            ],
+            practice: [
+              'Sort a sample inbox of 20 messages by priority',
+              'Create labels or folders for better organization',
+              'Draft three responses and explain why they do not need escalation'
+            ],
             tools: ['Gmail', 'Outlook'],
-            checklist: ['Tag urgent items', 'Create 4 folders or labels', 'Draft 3 replies']
+            homework: 'Organize a sample inbox and explain the logic behind the system you used.',
+            output: 'Organized inbox sample'
           },
           {
             id: 'w1d4',
             day: 'Day 4',
             title: 'Calendar Management',
-            objective: 'Manage scheduling, time blocking, buffers, and conflict resolution.',
-            overview: 'The trainee learns to guard executive time, avoid overbooking, and schedule with intention.',
-            trainerScript: 'A calendar should reflect priorities, not chaos. The EA must protect focus time, reduce context switching, and make sure the CEO has room to prepare and recover between meetings. Good scheduling is part logistics and part judgment.',
-            activities: ['Schedule a mock week for a CEO', 'Resolve three meeting conflicts', 'Build prep and travel buffers'],
-            homework: 'Create a sample executive calendar for one week.',
-            output: 'One-week calendar plan',
+            objective: 'Learn how to schedule intentionally, protect focus time, build buffers, and resolve conflicts professionally.',
+            why: 'A weak calendar creates stress. A strong calendar helps the executive stay prepared, focused, and available for the right priorities.',
+            learn: [
+              'How to time-block focus work and avoid overbooking',
+              'Why meeting buffers matter before and after appointments',
+              'How to handle competing meetings and reschedule with clarity',
+              'How to schedule with context, preparation time, and travel in mind'
+            ],
+            practice: [
+              'Build a one-week executive calendar',
+              'Resolve three sample meeting conflicts',
+              'Add buffers, prep blocks, and lunch or recovery time'
+            ],
             tools: ['Google Calendar', 'Outlook Calendar', 'Calendly'],
-            checklist: ['Create focus blocks', 'Add meeting buffers', 'Resolve all sample conflicts']
+            homework: 'Create a clean one-week calendar for a CEO that includes focus blocks, meeting buffers, and conflict handling.',
+            output: 'One-week calendar plan'
           },
           {
             id: 'w1d5',
             day: 'Day 5',
             title: 'Chat Tools, Note-Taking, and Daily Workflow',
-            objective: 'Use communication tools properly and stay organized during fast-moving workdays.',
-            overview: 'Focus on Slack, Teams, Notion, and keeping a clean daily operating rhythm.',
-            trainerScript: 'A productive EA knows what belongs in chat, what belongs in email, and what belongs in a task tracker. Your job is to communicate clearly, keep notes, and never lose action items.',
-            activities: ['Slack thread practice', 'Meeting notes exercise', 'Daily operating checklist creation'],
-            homework: 'Create a reusable daily workflow checklist for executive support.',
-            output: 'Daily workflow checklist',
-            tools: ['Slack', 'Teams', 'Notion', 'Google Docs'],
-            checklist: ['Post sample updates', 'Capture meeting notes', 'Build personal workflow checklist']
+            objective: 'Learn how to use chat tools correctly, capture notes clearly, and maintain a clean daily working rhythm.',
+            why: 'A strong EA knows where information belongs and makes sure nothing gets lost between chat, email, notes, and task tracking.',
+            learn: [
+              'When to use chat versus email versus a task tracker',
+              'How to write quick but professional internal updates',
+              'How to capture meeting notes clearly and actionably',
+              'How to build a repeatable daily workflow checklist'
+            ],
+            practice: [
+              'Post sample Slack updates in the right style',
+              'Take notes from a short meeting scenario',
+              'Create a daily operating checklist for executive support'
+            ],
+            tools: ['Slack', 'Microsoft Teams', 'Notion', 'Google Docs'],
+            homework: 'Submit a reusable daily workflow checklist showing how you will manage updates, notes, and follow-ups.',
+            output: 'Daily workflow checklist'
           }
         ]
       },
       {
         week: 2,
         theme: 'Productivity + Operations Support',
-        goal: 'Teach the EA to manage task flow, documents, reports, and routine operational support.',
+        goal: 'Teach the EA to manage task flow, documents, reports, meetings, and routine support work more independently.',
         days: [
           {
             id: 'w2d1',
             day: 'Day 6',
             title: 'Task Management and Prioritization',
-            objective: 'Track tasks, follow up consistently, and separate urgent work from important work.',
-            overview: 'Introduce task systems and prioritization frameworks used in executive support.',
-            trainerScript: 'A missed follow-up can cost time, trust, and money. A strong EA builds a reliable task system and knows which items need immediate attention, which can wait, and which need escalation.',
-            activities: ['Organize tasks by urgency and impact', 'Build a task board', 'Follow-up message practice'],
-            homework: 'Create a personal task board with priority labels and due dates.',
-            output: 'Task board setup',
+            objective: 'Learn how to track tasks, follow up on deadlines, and separate urgent work from important work.',
+            why: 'A missed follow-up can break trust. A strong task system gives visibility and prevents important details from slipping.',
+            learn: [
+              'How to organize tasks by urgency, impact, and deadline',
+              'How to create a reliable follow-up system',
+              'What makes a good task description and owner assignment',
+              'How to escalate blocked work instead of letting it disappear'
+            ],
+            practice: [
+              'Sort a list of tasks by urgency and business impact',
+              'Build a simple task board in a project tool',
+              'Write three follow-up messages for delayed or pending work'
+            ],
             tools: ['Trello', 'Asana', 'ClickUp'],
-            checklist: ['Sort 15 tasks', 'Create labels', 'Write 3 follow-up messages']
+            homework: 'Create a personal task board with priority labels, due dates, and follow-up reminders.',
+            output: 'Task board setup'
           },
           {
             id: 'w2d2',
             day: 'Day 7',
             title: 'Document Management and File Organization',
-            objective: 'Build a clean file structure and manage access correctly.',
-            overview: 'Teach the trainee how to name files, organize folders, and avoid messy document storage.',
-            trainerScript: 'When documents are hard to find, work slows down. An EA should create a filing structure that is intuitive, consistent, and secure. If someone else needs a file later, they should be able to find it quickly.',
-            activities: ['Organize a messy drive sample', 'Create naming conventions', 'Review sharing permissions'],
-            homework: 'Submit a folder structure proposal for an executive support team.',
-            output: 'Folder structure map',
-            tools: ['Google Drive', 'Dropbox', 'OneDrive'],
-            checklist: ['Create folder map', 'Rename sample files', 'Review permissions']
+            objective: 'Learn how to create clean digital filing systems and manage document access properly.',
+            why: 'An EA often becomes the person who knows where things are. Good file organization saves time for the whole team, not just the executive.',
+            learn: [
+              'How to create folder structures that are easy to navigate',
+              'How to use consistent file naming conventions',
+              'How to think about access, visibility, and sharing permissions',
+              'How to reduce duplicate files and document confusion'
+            ],
+            practice: [
+              'Clean up a messy drive sample',
+              'Rename poorly labeled files using a better system',
+              'Review who should or should not have access to sample folders'
+            ],
+            tools: ['Google Drive', 'Dropbox', 'OneDrive', 'DocuSign'],
+            homework: 'Create a folder structure proposal for a small executive support team.',
+            output: 'Folder structure map'
           },
           {
             id: 'w2d3',
             day: 'Day 8',
             title: 'Spreadsheets and Reporting Basics',
-            objective: 'Use spreadsheets to track data, deadlines, meetings, and simple KPIs.',
-            overview: 'The trainee learns the spreadsheet functions most useful to EAs supporting leaders.',
-            trainerScript: 'You do not need to be a data analyst to be a strong EA, but you do need to track information accurately. Reports help the CEO see what matters quickly. Clean data supports better decisions.',
-            activities: ['Build a weekly report template', 'Use SUM and IF formulas', 'Create a tracker for meetings and action items'],
-            homework: 'Create a simple executive weekly update sheet.',
-            output: 'Weekly report template',
-            tools: ['Google Sheets', 'Excel'],
-            checklist: ['Use basic formulas', 'Build report headers', 'Track sample KPIs']
+            objective: 'Learn how to track information, use simple formulas, and present clean reports for leadership.',
+            why: 'Leaders need visibility. A capable EA can turn messy information into a simple, useful report or tracker.',
+            learn: [
+              'How to create simple trackers for meetings, follow-ups, and deadlines',
+              'How to use basic spreadsheet formulas like SUM and IF',
+              'What makes a report useful for a busy executive',
+              'How to keep data clear, readable, and current'
+            ],
+            practice: [
+              'Build a weekly executive update sheet',
+              'Use formulas in a sample report',
+              'Create a tracker for meeting actions and deadlines'
+            ],
+            tools: ['Google Sheets', 'Microsoft Excel', 'Airtable'],
+            homework: 'Create a weekly report template that a CEO can scan quickly.',
+            output: 'Weekly report template'
           },
           {
             id: 'w2d4',
             day: 'Day 9',
             title: 'Meeting Preparation and Follow-Through',
-            objective: 'Prepare agendas, capture action items, and follow up after meetings.',
-            overview: 'Train the EA to make meetings smoother and more productive.',
-            trainerScript: 'Meetings are only useful when there is clear preparation and clean follow-through. A good EA prepares the agenda in advance, ensures the right attendees are present, captures decisions, and keeps action items moving afterward.',
-            activities: ['Draft an agenda', 'Take notes from a mock meeting', 'Send a follow-up recap'],
-            homework: 'Create a meeting recap template with owners and deadlines.',
-            output: 'Meeting recap template',
+            objective: 'Learn how to prepare agendas, capture decisions, and make sure meetings lead to action.',
+            why: 'Meetings create value only when they are prepared and followed through well. A strong EA helps make meetings more useful and less wasteful.',
+            learn: [
+              'How to create a simple but effective agenda',
+              'How to capture decisions, owners, and deadlines during a meeting',
+              'How to send a clean recap afterward',
+              'How to track unresolved items after the meeting ends'
+            ],
+            practice: [
+              'Draft a meeting agenda from a sample request',
+              'Take notes from a mock call',
+              'Write a follow-up recap that includes action items and deadlines'
+            ],
             tools: ['Zoom', 'Google Meet', 'Google Docs', 'Notion'],
-            checklist: ['Prepare agenda', 'Capture decisions', 'Assign owners and deadlines']
+            homework: 'Create a reusable meeting recap template with sections for owners, decisions, and next steps.',
+            output: 'Meeting recap template'
           },
           {
             id: 'w2d5',
             day: 'Day 10',
             title: 'Workflow Automation and Efficiency',
-            objective: 'Recognize repetitive work and understand simple automation opportunities.',
-            overview: 'Help the trainee identify time-saving workflows and handoff points.',
-            trainerScript: 'Not every task should stay manual forever. Part of your growth as an EA is learning how to spot repeated steps and either standardize or automate them. Even small efficiencies compound over time.',
-            activities: ['Map a repetitive workflow', 'Identify automation triggers', 'Write a standard operating procedure'],
-            homework: 'Choose one repeated task and design a better process for it.',
-            output: 'Workflow improvement proposal',
+            objective: 'Learn how to recognize repetitive work and improve it through better process design or simple automation.',
+            why: 'Executive support becomes stronger when repeated manual tasks are documented, standardized, or automated where appropriate.',
+            learn: [
+              'How to spot repeated tasks that waste time',
+              'How simple automation tools can connect common apps',
+              'How to write a basic standard operating procedure',
+              'How process improvement helps the whole team'
+            ],
+            practice: [
+              'Map one repeated weekly workflow step by step',
+              'Identify the trigger, action, and result in a simple automation',
+              'Write a short SOP for a routine recurring task'
+            ],
             tools: ['Zapier', 'Make', 'Google Forms'],
-            checklist: ['Identify repeated steps', 'Map trigger and outcome', 'Submit SOP draft']
+            homework: 'Choose one repeated task and create a short proposal showing how you would improve or simplify it.',
+            output: 'Workflow improvement proposal'
           }
         ]
       },
       {
         week: 3,
         theme: 'Advanced Executive Support',
-        goal: 'Train the EA to handle higher-level support with foresight, discretion, and stronger business awareness.',
+        goal: 'Train the EA to handle higher-level support with stronger foresight, organization, and executive judgment.',
         days: [
           {
             id: 'w3d1',
             day: 'Day 11',
             title: 'Advanced Calendar and Travel Coordination',
-            objective: 'Handle time zones, travel bookings, itineraries, and scheduling complexity.',
-            overview: 'Teach the EA how to coordinate logistics with minimal friction.',
-            trainerScript: 'Advanced executive support means thinking three steps ahead. If the CEO has travel, a packed meeting day, or multiple time zones involved, your planning must prevent confusion. Every detail matters: airport time, hotel check-in, calendar holds, and briefing notes.',
-            activities: ['Build a travel itinerary', 'Convert times across regions', 'Block prep and transit windows'],
-            homework: 'Create a two-day executive trip plan with meetings included.',
-            output: 'Travel itinerary',
-            tools: ['Google Calendar', 'Google Flights', 'Expedia'],
-            checklist: ['Add flight details', 'Map local times', 'Include contingency notes']
+            objective: 'Learn how to manage travel, time zones, meeting logistics, and itinerary planning with fewer mistakes.',
+            why: 'Once an EA moves into higher-level support, scheduling becomes more complex. Travel days, time differences, and logistics require strong attention to detail.',
+            learn: [
+              'How to convert time zones and avoid scheduling mistakes',
+              'How to build a complete travel itinerary',
+              'How to include prep, transit, and contingency buffers',
+              'How to organize flights, hotel details, and meeting logistics in one plan'
+            ],
+            practice: [
+              'Plan a two-day executive trip',
+              'Map local time versus home time for meetings',
+              'Create one clean itinerary document'
+            ],
+            tools: ['Google Calendar', 'Google Flights', 'Expedia', 'World Time Buddy'],
+            homework: 'Create a complete two-day executive trip plan with flights, hotel, meeting schedule, and time-zone awareness.',
+            output: 'Travel itinerary'
           },
           {
             id: 'w3d2',
             day: 'Day 12',
             title: 'Client, Stakeholder, and Vendor Communication',
-            objective: 'Represent the CEO with polish when interacting with external contacts.',
-            overview: 'Train the EA to coordinate across clients, partners, and service providers professionally.',
-            trainerScript: 'You may be the first impression and the follow-up point of contact for important people. That means every message should feel organized, respectful, and clear. Good external communication protects the executive’s reputation.',
-            activities: ['Draft stakeholder updates', 'Coordinate a reschedule request', 'Manage a vendor follow-up'],
-            homework: 'Write three external-facing messages on behalf of the CEO.',
-            output: 'Stakeholder communication draft',
+            objective: 'Learn how to represent the executive professionally when dealing with clients, partners, and service providers.',
+            why: 'The EA may become the first touchpoint or follow-up person for important relationships. That means the communication must feel polished and trustworthy.',
+            learn: [
+              'How to coordinate with external contacts on behalf of the executive',
+              'How to request updates or reschedules without sounding unclear',
+              'How to protect tone and reputation in stakeholder communication',
+              'How to keep communication short, warm, and actionable'
+            ],
+            practice: [
+              'Write client-facing and vendor-facing messages',
+              'Draft a reschedule request with better clarity',
+              'Review examples of strong external communication'
+            ],
             tools: ['Gmail', 'Outlook', 'Zoom'],
-            checklist: ['Draft 3 messages', 'Review tone', 'Ensure clear next steps']
+            homework: 'Write three external-facing messages on behalf of the executive: one update, one follow-up, and one reschedule request.',
+            output: 'Stakeholder communication draft'
           },
           {
             id: 'w3d3',
             day: 'Day 13',
             title: 'CRM and Pipeline Support',
-            objective: 'Update deal or contact records and support basic sales or relationship workflows.',
-            overview: 'Introduce the EA to CRM hygiene and executive visibility needs.',
-            trainerScript: 'In many businesses, the CEO needs visibility into relationships, deals, and key follow-ups. A clean CRM makes that possible. Your role is to keep records current and make sure important interactions are not lost.',
-            activities: ['Log sample calls', 'Update contact records', 'Review deal stage tracking'],
-            homework: 'Create a short CRM hygiene checklist.',
-            output: 'CRM hygiene checklist',
+            objective: 'Learn how to update contacts, relationships, and sales pipeline information accurately.',
+            why: 'Many founders and business owners rely on CRM visibility to remember conversations, track follow-ups, and manage opportunities.',
+            learn: [
+              'How CRM systems keep relationships and opportunities visible',
+              'What information should be updated after calls or meetings',
+              'How deal stages and notes affect business visibility',
+              'Why CRM hygiene matters to leaders and teams'
+            ],
+            practice: [
+              'Update sample contact records',
+              'Log notes from a mock meeting or sales call',
+              'Review incomplete records and fix missing fields'
+            ],
             tools: ['HubSpot', 'Salesforce', 'Pipedrive'],
-            checklist: ['Update sample records', 'Add notes', 'Correct missing fields']
+            homework: 'Create a short CRM hygiene checklist for executive support.',
+            output: 'CRM hygiene checklist'
           },
           {
             id: 'w3d4',
             day: 'Day 14',
             title: 'Executive Thinking and Problem Solving',
-            objective: 'Anticipate needs, manage ambiguity, and make thoughtful recommendations.',
-            overview: 'This day sharpens judgment, ownership, and decision support.',
-            trainerScript: 'At a higher level, the EA does more than complete tasks. They help the CEO think clearly. That means identifying risks early, surfacing important details, and presenting practical options instead of only bringing problems.',
-            activities: ['Decision support roleplay', 'Priority triage under pressure', 'Risk spotting exercise'],
-            homework: 'Write a brief recommending a solution to an operational issue.',
-            output: 'Decision support brief',
+            objective: 'Learn how to anticipate needs, handle ambiguity, and bring possible solutions instead of only problems.',
+            why: 'The best EAs become a second brain for the executive. They spot risks early, organize facts fast, and help leaders make cleaner decisions.',
+            learn: [
+              'How to identify risk, urgency, and possible next steps',
+              'How to make recommendations instead of only reporting problems',
+              'How to organize information so it helps decision-making',
+              'How to stay calm and useful when details are incomplete'
+            ],
+            practice: [
+              'Do a decision-support roleplay',
+              'Sort conflicting priorities under pressure',
+              'Write a short problem-and-solution brief'
+            ],
             tools: ['Notion', 'Google Docs', 'ClickUp'],
-            checklist: ['List options', 'Recommend one path', 'Explain business impact']
+            homework: 'Write a short recommendation brief for a sample operational problem, including options and your suggested path.',
+            output: 'Decision support brief'
           },
           {
             id: 'w3d5',
             day: 'Day 15',
             title: 'Final Simulation: CEO Support Day',
-            objective: 'Combine all learned skills in one realistic executive support simulation.',
-            overview: 'The trainee handles a heavy inbox, schedule changes, meeting prep, urgent requests, and reporting tasks in one scenario.',
-            trainerScript: 'Today is the capstone simulation. Imagine you are the CEO’s Executive Assistant for a full workday. Your job is to organize the chaos, communicate clearly, protect priorities, and keep momentum moving across the business.',
-            activities: ['Triage 25 sample emails', 'Fix 3 calendar conflicts', 'Prepare an agenda and meeting recap', 'Create a brief daily status report'],
-            homework: 'Complete the final assessment and submit all deliverables.',
-            output: 'Final simulation package',
+            objective: 'Combine everything learned into one realistic executive support scenario.',
+            why: 'This day shows whether the trainee can organize chaos, communicate well, and support a CEO with good judgment under pressure.',
+            learn: [
+              'How to manage a heavy inbox while preserving priorities',
+              'How to fix calendar conflicts without causing more chaos',
+              'How to prepare a meeting agenda, notes, and recap quickly',
+              'How to summarize the day clearly for an executive or trainer'
+            ],
+            practice: [
+              'Triage 25 sample emails',
+              'Fix three calendar conflicts',
+              'Prepare one agenda and one meeting recap',
+              'Create a short daily executive status report'
+            ],
             tools: ['Gmail', 'Google Calendar', 'Slack', 'Google Docs', 'Google Sheets'],
-            checklist: ['Complete all scenarios', 'Submit final report', 'Take assessment']
+            homework: 'Complete the final simulation, submit all outputs, and take the readiness assessment.',
+            output: 'Final simulation package'
           }
         ]
       }
     ];
-    const toolCategories = [
+
+    const tools = [
       {
-        title: 'Email and Communication',
-        description: 'Used for executive communication, inbox management, and internal updates.',
-        tools: ['Gmail', 'Outlook', 'Slack', 'Microsoft Teams']
+        name:'Google Workspace',
+        family:'Workspace Suite',
+        category:'Suite',
+        domain:'workspace.google.com',
+        brand:'#4285F4',
+        blurb:'Suite of connected Google tools used for email, calendar, files, docs, sheets, meetings, and collaboration.',
+        purpose:'Google Workspace is the overall productivity suite that combines Gmail, Calendar, Drive, Docs, Sheets, Meet, and Slides into one connected work environment.',
+        why:'Many EAs use Google Workspace because everything is connected. It is easier to move from email to calendar to files to notes without switching into unrelated systems.',
+        daily:['Manage communication in Gmail','Schedule in Google Calendar','Store files in Drive','Write notes in Docs','Track data in Sheets','Meet in Google Meet'],
+        master:['Understand how the Google tools work together','Know when to use each app','Share and manage permissions correctly','Create a clean executive support workflow across the suite'],
+        days:['Day 1','Day 3','Day 4','Day 5','Day 7','Day 8','Day 9','Day 15'],
+        suite:['Gmail','Google Calendar','Google Drive','Google Docs','Google Sheets','Google Meet','Google Slides']
       },
       {
-        title: 'Calendar and Scheduling',
-        description: 'Used to protect executive time, schedule meetings, and manage time zones.',
-        tools: ['Google Calendar', 'Outlook Calendar', 'Calendly', 'World Time Buddy']
+        name:'Gmail',
+        family:'Email and Communication',
+        category:'Communication',
+        domain:'mail.google.com',
+        brand:'#EA4335',
+        blurb:'Used to triage inboxes, draft replies, organize labels, and protect executive attention.',
+        purpose:'Gmail helps EAs manage executive email, sort incoming requests, draft responses, and make sure urgent messages are visible quickly.',
+        why:'EAs use Gmail because the inbox is often the first place where requests, opportunities, and problems appear. Strong inbox handling saves executive time every day.',
+        daily:['Sort urgent vs non-urgent emails','Create labels and filters','Draft executive replies','Flag follow-up items'],
+        master:['Inbox triage','Labels and filters','Drafting professional replies','Summarizing email priorities'],
+        days:['Day 1','Day 2','Day 3','Day 12','Day 15']
       },
       {
-        title: 'Meetings and Collaboration',
-        description: 'Used for virtual meetings, note-taking, and collaboration with teams and clients.',
-        tools: ['Zoom', 'Google Meet', 'Google Docs', 'Notion']
+        name:'Microsoft Outlook',
+        family:'Email and Communication',
+        category:'Communication',
+        domain:'outlook.office.com',
+        brand:'#0078D4',
+        blurb:'Enterprise email tool used for executive communication, meeting invites, and follow-up.',
+        purpose:'Outlook is used by many businesses for email communication, scheduling, and team coordination, especially in Microsoft-based environments.',
+        why:'EAs use Outlook when the executive or company runs on Microsoft systems. It supports email organization, calendar invitations, and business communication in one place.',
+        daily:['Send professional replies','Manage folders and rules','Coordinate meeting invites','Track follow-up messages'],
+        master:['Folders and rules','Professional email drafting','Calendar invites','Clean follow-up habits'],
+        days:['Day 2','Day 3','Day 12']
       },
       {
-        title: 'Task and Project Management',
-        description: 'Used to organize tasks, priorities, follow-ups, and project status.',
-        tools: ['Trello', 'Asana', 'ClickUp', 'Monday.com']
+        name:'Slack',
+        family:'Communication and Internal Updates',
+        category:'Communication',
+        domain:'slack.com',
+        brand:'#4A154B',
+        blurb:'Team chat tool used for quick updates, coordination, and fast internal communication.',
+        purpose:'Slack is used for quick team communication, channel-based collaboration, and lightweight follow-ups that do not need a full email.',
+        why:'EAs use Slack to move quickly, coordinate across teams, and keep internal updates flowing without cluttering the executive’s inbox.',
+        daily:['Post quick status updates','Follow threads','Ask clarifying questions','Coordinate task handoffs'],
+        master:['Chat etiquette','Channel organization','Thread discipline','Clear internal updates'],
+        days:['Day 1','Day 2','Day 5','Day 15']
       },
       {
-        title: 'Files and Documentation',
-        description: 'Used to store, organize, and share executive files and records.',
-        tools: ['Google Drive', 'Dropbox', 'OneDrive', 'DocuSign']
+        name:'Microsoft Teams',
+        family:'Communication and Internal Updates',
+        category:'Communication',
+        domain:'teams.microsoft.com',
+        brand:'#6264A7',
+        blurb:'Team chat and collaboration tool common in Microsoft-centered companies.',
+        purpose:'Teams supports internal messaging, file collaboration, and meetings in organizations that use Microsoft products heavily.',
+        why:'EAs use Teams when the executive works in a Microsoft environment and needs one place for chat, meetings, and collaboration.',
+        daily:['Send internal updates','Coordinate quick replies','Share documents','Join and organize meetings'],
+        master:['Professional chat communication','Meeting coordination','File sharing','Presence awareness'],
+        days:['Day 2','Day 5']
       },
       {
-        title: 'Spreadsheets and Reports',
-        description: 'Used for trackers, reports, deadlines, budgets, and KPI summaries.',
-        tools: ['Google Sheets', 'Microsoft Excel', 'Airtable']
+        name:'Google Calendar',
+        family:'Calendar and Scheduling',
+        category:'Scheduling',
+        domain:'calendar.google.com',
+        brand:'#4285F4',
+        blurb:'Used to schedule meetings, time-block work, protect focus time, and manage logistics.',
+        purpose:'Google Calendar helps EAs schedule meetings, protect time, build buffers, and make sure the executive’s day matches real priorities.',
+        why:'EAs use Google Calendar because executive time is limited. Good calendar management reduces conflict, stress, and unnecessary context switching.',
+        daily:['Create events','Block focus time','Add meeting buffers','Adjust schedules when priorities change'],
+        master:['Time blocking','Conflict management','Buffer planning','Scheduling judgment'],
+        days:['Day 1','Day 4','Day 11','Day 15']
       },
       {
-        title: 'CRM and Relationship Tracking',
-        description: 'Used to manage contacts, deals, follow-ups, and customer visibility.',
-        tools: ['HubSpot', 'Salesforce', 'Pipedrive']
+        name:'Outlook Calendar',
+        family:'Calendar and Scheduling',
+        category:'Scheduling',
+        domain:'outlook.office.com',
+        brand:'#0078D4',
+        blurb:'Calendar tool used in Microsoft environments for scheduling and meeting coordination.',
+        purpose:'Outlook Calendar is used to manage meetings, invitations, availability, and time protection in Microsoft-based workplaces.',
+        why:'EAs use Outlook Calendar when their executive’s company relies on Microsoft. It helps keep schedules, invites, and meeting updates in one system.',
+        daily:['Create calendar invites','Track availability','Coordinate reschedules','Manage executive schedule'],
+        master:['Availability planning','Invite management','Meeting updates','Time protection'],
+        days:['Day 4']
       },
       {
-        title: 'Automation and Efficiency',
-        description: 'Used to reduce repetitive admin work and connect workflows.',
-        tools: ['Zapier', 'Make', 'Google Forms']
+        name:'Calendly',
+        family:'Scheduling Automation',
+        category:'Scheduling',
+        domain:'calendly.com',
+        brand:'#006BFF',
+        blurb:'Scheduling link tool that reduces back-and-forth when booking meetings.',
+        purpose:'Calendly lets people book meetings into available time slots without long scheduling emails.',
+        why:'EAs use Calendly when they want to simplify external booking and reduce repetitive coordination work.',
+        daily:['Share booking links','Set meeting rules','Control availability windows','Avoid manual back-and-forth'],
+        master:['Availability settings','Event rules','Meeting buffers','External scheduling flow'],
+        days:['Day 4']
       },
       {
-        title: 'Design and Presentation Support',
-        description: 'Useful when assisting with decks, simple visuals, or polished materials.',
-        tools: ['Canva', 'PowerPoint', 'Google Slides']
+        name:'World Time Buddy',
+        family:'Scheduling Automation',
+        category:'Scheduling',
+        domain:'worldtimebuddy.com',
+        brand:'#0D6EFD',
+        blurb:'Time-zone comparison tool used when executives work across regions.',
+        purpose:'World Time Buddy helps compare time zones and avoid mistakes when planning calls, travel, or international meetings.',
+        why:'EAs use it because one wrong time-zone assumption can cause missed meetings and executive frustration.',
+        daily:['Compare time zones','Check overlap windows','Plan international calls','Support travel scheduling'],
+        master:['Time-zone awareness','Cross-region scheduling','Avoiding conversion mistakes'],
+        days:['Day 11']
+      },
+      {
+        name:'Zoom',
+        family:'Meetings and Collaboration',
+        category:'Meetings',
+        domain:'zoom.us',
+        brand:'#0B5CFF',
+        blurb:'Video meeting platform used for internal calls, client meetings, and executive coordination.',
+        purpose:'Zoom is used to host and join meetings, client calls, interviews, and virtual coordination sessions.',
+        why:'EAs use Zoom because meetings are a major part of executive work, and the EA often helps schedule, prepare, and support those sessions.',
+        daily:['Send meeting links','Coordinate calls','Monitor schedule timing','Prepare virtual meeting details'],
+        master:['Meeting setup','Invite handling','Host details','Follow-up coordination'],
+        days:['Day 9','Day 12']
+      },
+      {
+        name:'Google Meet',
+        family:'Meetings and Collaboration',
+        category:'Meetings',
+        domain:'meet.google.com',
+        brand:'#34A853',
+        blurb:'Google-based meeting tool used for quick internal and external virtual sessions.',
+        purpose:'Google Meet supports video meetings directly inside the Google Workspace ecosystem.',
+        why:'EAs use Google Meet because it works smoothly with Gmail and Google Calendar and is simple to schedule from the same environment.',
+        daily:['Join scheduled calls','Create Meet links','Coordinate meeting access','Support recurring virtual meetings'],
+        master:['Calendar-linked meetings','Access coordination','Meeting readiness'],
+        days:['Day 9']
+      },
+      {
+        name:'Google Docs',
+        family:'Writing and Notes',
+        category:'Documents',
+        domain:'docs.google.com',
+        brand:'#4285F4',
+        blurb:'Document tool used for notes, meeting recaps, agendas, and executive drafts.',
+        purpose:'Google Docs lets EAs write, edit, organize, and share documents such as agendas, recaps, SOPs, and briefs.',
+        why:'EAs use Google Docs because it is fast, collaborative, and easy to share with leaders or teammates for quick review.',
+        daily:['Draft meeting recaps','Write SOPs','Prepare briefing notes','Collaborate on documents'],
+        master:['Clean document formatting','Collaborative editing','Sharing and permissions','Executive-style writing'],
+        days:['Day 5','Day 9','Day 14','Day 15']
+      },
+      {
+        name:'Notion',
+        family:'Writing and Notes',
+        category:'Documents',
+        domain:'notion.so',
+        brand:'#111111',
+        blurb:'Workspace used for notes, wikis, team information, and organized internal knowledge.',
+        purpose:'Notion can act as a hub for notes, SOPs, trackers, meeting summaries, and team knowledge.',
+        why:'EAs use Notion because it helps centralize information and reduce scattered notes across many places.',
+        daily:['Capture meeting notes','Maintain internal pages','Organize checklists','Store recurring workflows'],
+        master:['Page structure','Clear note-taking','Knowledge organization','Template use'],
+        days:['Day 5','Day 9','Day 14']
+      },
+      {
+        name:'Trello',
+        family:'Task and Project Management',
+        category:'Task Management',
+        domain:'trello.com',
+        brand:'#0052CC',
+        blurb:'Board-based task system for visible priorities and follow-up tracking.',
+        purpose:'Trello helps organize tasks into clear stages so nothing important gets lost.',
+        why:'EAs use Trello when they want a simple visual board to track requests, deadlines, and status changes.',
+        daily:['Move tasks through stages','Track pending items','Organize priorities','See what is blocked'],
+        master:['Board setup','Lists and cards','Status visibility','Follow-up discipline'],
+        days:['Day 6']
+      },
+      {
+        name:'Asana',
+        family:'Task and Project Management',
+        category:'Task Management',
+        domain:'asana.com',
+        brand:'#F06A6A',
+        blurb:'Task and project platform used to track work, owners, and deadlines.',
+        purpose:'Asana helps teams assign tasks, set deadlines, and track progress across ongoing work.',
+        why:'EAs use Asana when they need more structured follow-up and clearer ownership across projects or teams.',
+        daily:['Assign owners','Track due dates','Update task status','Monitor open action items'],
+        master:['Task setup','Owner assignment','Due date management','Project visibility'],
+        days:['Day 6']
+      },
+      {
+        name:'ClickUp',
+        family:'Task and Project Management',
+        category:'Task Management',
+        domain:'clickup.com',
+        brand:'#7B68EE',
+        blurb:'Flexible task and project tool used to manage detailed workflows and follow-ups.',
+        purpose:'ClickUp combines tasks, checklists, docs, and workflow views in one place.',
+        why:'EAs use ClickUp when they need a more customizable system to manage ongoing executive support work and operations tasks.',
+        daily:['Track recurring tasks','Build lists and statuses','Document details','Follow overdue work'],
+        master:['Statuses and views','Task detail setup','Recurring work tracking','Follow-up management'],
+        days:['Day 6','Day 14']
+      },
+      {
+        name:'Monday.com',
+        family:'Task and Project Management',
+        category:'Task Management',
+        domain:'monday.com',
+        brand:'#FF3D57',
+        blurb:'Visual workflow platform for tracking projects, tasks, and team operations.',
+        purpose:'Monday.com is used to monitor team workflows, projects, requests, and deadlines in a visual board format.',
+        why:'Some EAs use Monday.com when executive support overlaps with operations or cross-functional coordination.',
+        daily:['Track work streams','Review board status','Coordinate owners','Report progress'],
+        master:['Board navigation','Status updates','Owner visibility','Operational tracking'],
+        days:['Day 6']
+      },
+      {
+        name:'Google Drive',
+        family:'Files and Documentation',
+        category:'Files',
+        domain:'drive.google.com',
+        brand:'#34A853',
+        blurb:'Cloud storage for executive documents, folders, and shared team files.',
+        purpose:'Google Drive stores files, folders, templates, and supporting documents in the Google ecosystem.',
+        why:'EAs use Google Drive because it makes it easy to organize shared files and give the right people access quickly.',
+        daily:['Store files','Create folder structures','Share documents','Maintain organized archives'],
+        master:['Folder structure','Permission settings','File naming','Shared drive hygiene'],
+        days:['Day 7']
+      },
+      {
+        name:'Dropbox',
+        family:'Files and Documentation',
+        category:'Files',
+        domain:'dropbox.com',
+        brand:'#0061FF',
+        blurb:'Cloud file platform used for storing and sharing business documents.',
+        purpose:'Dropbox is used to store files, share documents, and keep folders synchronized across devices and teammates.',
+        why:'EAs use Dropbox when their executive or team already stores business records and files there.',
+        daily:['Upload and organize files','Share folders','Control document access','Keep records in one place'],
+        master:['Folder organization','Sharing links','Permission awareness'],
+        days:['Day 7']
+      },
+      {
+        name:'OneDrive',
+        family:'Files and Documentation',
+        category:'Files',
+        domain:'onedrive.live.com',
+        brand:'#0078D4',
+        blurb:'Microsoft cloud storage for documents, folders, and shared executive files.',
+        purpose:'OneDrive helps store and share files inside a Microsoft-based workplace.',
+        why:'EAs use OneDrive when the business runs on Microsoft tools and needs documents to stay integrated with Outlook, Teams, and Office files.',
+        daily:['Store files','Share securely','Access documents across devices','Coordinate with Microsoft tools'],
+        master:['Folder organization','Permission settings','Microsoft file flow'],
+        days:['Day 7']
+      },
+      {
+        name:'DocuSign',
+        family:'Files and Documentation',
+        category:'Files',
+        domain:'docusign.com',
+        brand:'#FFCC22',
+        blurb:'Electronic signature platform for fast approvals and signed business documents.',
+        purpose:'DocuSign allows users to send, sign, and track important business documents digitally.',
+        why:'EAs use DocuSign because leaders often need agreements, approvals, and formal documents handled quickly and securely.',
+        daily:['Send signature requests','Track signing progress','Remind signers','Store completed documents'],
+        master:['Envelope setup','Signer flow','Tracking completion','Document handoff'],
+        days:['Day 7']
+      },
+      {
+        name:'Google Sheets',
+        family:'Reporting and Tracking',
+        category:'Reporting',
+        domain:'sheets.google.com',
+        brand:'#34A853',
+        blurb:'Spreadsheet tool for trackers, reports, logs, and light analysis.',
+        purpose:'Google Sheets helps EAs build simple trackers, reports, dashboards, and structured lists.',
+        why:'EAs use Google Sheets when they need a fast shared spreadsheet for deadlines, action items, or weekly updates.',
+        daily:['Build trackers','Update deadlines','Log tasks','Create simple reports'],
+        master:['Basic formulas','Clean layouts','Shared reporting','Tracker maintenance'],
+        days:['Day 8','Day 15']
+      },
+      {
+        name:'Microsoft Excel',
+        family:'Reporting and Tracking',
+        category:'Reporting',
+        domain:'microsoft.com',
+        brand:'#217346',
+        blurb:'Spreadsheet tool for structured reports, data tracking, and executive support analysis.',
+        purpose:'Excel is used for more formal spreadsheets, reporting, and data organization in many companies.',
+        why:'EAs use Excel when the business already runs many trackers or reports in Microsoft formats.',
+        daily:['Update reports','Track metrics','Build tables','Maintain spreadsheets'],
+        master:['Basic spreadsheet formulas','Formatting','Data clarity','Report hygiene'],
+        days:['Day 8']
+      },
+      {
+        name:'Airtable',
+        family:'Reporting and Tracking',
+        category:'Reporting',
+        domain:'airtable.com',
+        brand:'#18BFFF',
+        blurb:'Database-style tracker for organized operational records and workflows.',
+        purpose:'Airtable combines spreadsheet simplicity with database structure for tracking operations, contacts, or workflows.',
+        why:'Some EAs use Airtable when simple spreadsheets are no longer enough for structured support work.',
+        daily:['Track records','Maintain organized fields','Filter views','Monitor status updates'],
+        master:['Views','Fields','Record hygiene','Operational visibility'],
+        days:['Day 8']
+      },
+      {
+        name:'HubSpot',
+        family:'CRM and Relationship Tracking',
+        category:'CRM',
+        domain:'hubspot.com',
+        brand:'#FF7A59',
+        blurb:'CRM tool used to track contacts, deals, notes, and relationship activity.',
+        purpose:'HubSpot helps organize contacts, opportunities, communication history, and pipeline movement.',
+        why:'EAs use HubSpot when they support founders, sales leaders, or business owners who need visibility into relationships and follow-ups.',
+        daily:['Update contact notes','Track deals','Review follow-ups','Log meeting details'],
+        master:['Contact updates','Deal hygiene','Activity logging','Visibility for the executive'],
+        days:['Day 13']
+      },
+      {
+        name:'Salesforce',
+        family:'CRM and Relationship Tracking',
+        category:'CRM',
+        domain:'salesforce.com',
+        brand:'#00A1E0',
+        blurb:'Enterprise CRM platform used to manage customer records, pipeline, and business visibility.',
+        purpose:'Salesforce stores customer, prospect, and opportunity information and helps teams manage follow-up and pipeline stages.',
+        why:'EAs use Salesforce in larger or more structured organizations where relationship tracking and sales visibility matter to leadership.',
+        daily:['Review contact records','Update opportunities','Check status changes','Support executive visibility'],
+        master:['Record maintenance','Pipeline awareness','Clean notes','Useful data entry'],
+        days:['Day 13']
+      },
+      {
+        name:'Pipedrive',
+        family:'CRM and Relationship Tracking',
+        category:'CRM',
+        domain:'pipedrive.com',
+        brand:'#128C7E',
+        blurb:'CRM tool focused on simple pipeline and follow-up visibility.',
+        purpose:'Pipedrive is used to track leads, deals, follow-ups, and pipeline movement in a simpler visual way.',
+        why:'Some EAs use Pipedrive when they support small businesses or founders who want simple opportunity visibility.',
+        daily:['Update deal stages','Add activity notes','Track next steps','Review pending follow-ups'],
+        master:['Deal stage accuracy','Follow-up logging','Simple pipeline hygiene'],
+        days:['Day 13']
+      },
+      {
+        name:'Zapier',
+        family:'Automation and Efficiency',
+        category:'Automation',
+        domain:'zapier.com',
+        brand:'#FF4F00',
+        blurb:'Automation tool that connects apps and removes repeated manual tasks.',
+        purpose:'Zapier automates workflows between tools such as forms, email, spreadsheets, and task systems.',
+        why:'EAs use Zapier to save time and reduce repetitive steps, especially for recurring admin work.',
+        daily:['Connect two apps','Move form data into a tracker','Trigger task creation','Reduce manual copy-paste work'],
+        master:['Trigger and action thinking','Simple workflow design','Spotting automation opportunities'],
+        days:['Day 10']
+      },
+      {
+        name:'Make',
+        family:'Automation and Efficiency',
+        category:'Automation',
+        domain:'make.com',
+        brand:'#5A67FF',
+        blurb:'Automation platform used for more flexible or detailed workflow building.',
+        purpose:'Make helps connect apps and create more customizable automations for repeated workflows.',
+        why:'EAs use Make when they need slightly more complex process automation than a simple one-step workflow.',
+        daily:['Map workflow steps','Connect systems','Automate repeated actions','Improve recurring processes'],
+        master:['Workflow logic','Multi-step automation thinking','Process improvement'],
+        days:['Day 10']
+      },
+      {
+        name:'Google Forms',
+        family:'Automation and Efficiency',
+        category:'Automation',
+        domain:'forms.google.com',
+        brand:'#7248B9',
+        blurb:'Simple form tool for collecting requests, responses, and structured information.',
+        purpose:'Google Forms helps gather standardized information that can feed into sheets, workflows, or approvals.',
+        why:'EAs use Google Forms when they want to collect requests in a cleaner format instead of scattered chat or email messages.',
+        daily:['Build request forms','Collect structured responses','Send information to Sheets','Reduce messy intake processes'],
+        master:['Form design','Clear response fields','Workflow intake thinking'],
+        days:['Day 10']
+      },
+      {
+        name:'Canva',
+        family:'Design and Presentation Support',
+        category:'Presentation',
+        domain:'canva.com',
+        brand:'#00C4CC',
+        blurb:'Design tool used for quick polished visuals, internal decks, and simple presentation assets.',
+        purpose:'Canva helps create visuals, one-pagers, internal presentations, and simple branded materials without advanced design software.',
+        why:'EAs use Canva when the executive needs something polished quickly, such as a presentation slide, event graphic, or document cover.',
+        daily:['Build simple visuals','Edit presentation pages','Create branded support assets','Polish materials fast'],
+        master:['Templates','Brand consistency','Quick edits','Presentation support'],
+        days:['Day 15']
+      },
+      {
+        name:'Microsoft PowerPoint',
+        family:'Design and Presentation Support',
+        category:'Presentation',
+        domain:'microsoft.com',
+        brand:'#B7472A',
+        blurb:'Presentation tool used for executive decks, client presentations, and reports.',
+        purpose:'PowerPoint is widely used to build presentation decks, update executive reports, and prepare meeting materials.',
+        why:'EAs use PowerPoint when they support executives who regularly present updates, strategies, or business information.',
+        daily:['Update decks','Fix slide content','Prepare briefings','Support presentations'],
+        master:['Slide organization','Clean formatting','Executive presentation support'],
+        days:['Day 15']
+      },
+      {
+        name:'Google Slides',
+        family:'Design and Presentation Support',
+        category:'Presentation',
+        domain:'slides.google.com',
+        brand:'#F9AB00',
+        blurb:'Presentation tool in Google Workspace for collaborative decks and internal reporting.',
+        purpose:'Google Slides makes it easy to build and edit shareable presentation decks in the Google ecosystem.',
+        why:'EAs use Google Slides when the team works in Google Workspace and needs easy collaborative presentation editing.',
+        daily:['Edit decks collaboratively','Update presentation content','Prepare internal materials','Support team presentations'],
+        master:['Collaborative slide editing','Structure and readability','Presentation cleanup'],
+        days:['Day 15']
+      },
+      {
+        name:'Google Flights',
+        family:'Travel and Logistics',
+        category:'Travel',
+        domain:'google.com',
+        brand:'#4285F4',
+        blurb:'Flight search tool used for planning executive travel efficiently.',
+        purpose:'Google Flights helps compare flight options, timing, and travel routes when planning business trips.',
+        why:'EAs use Google Flights to save time when looking for practical travel choices and matching them to a leader’s schedule.',
+        daily:['Compare flight options','Check routes and times','Support itinerary planning','Align travel with calendar needs'],
+        master:['Flight comparison','Time awareness','Travel planning logic'],
+        days:['Day 11']
+      },
+      {
+        name:'Expedia',
+        family:'Travel and Logistics',
+        category:'Travel',
+        domain:'expedia.com',
+        brand:'#111827',
+        blurb:'Travel booking platform used for hotels, flights, and itinerary support.',
+        purpose:'Expedia helps book travel and organize logistics such as hotel stays, flights, and trip arrangements.',
+        why:'EAs use Expedia when they need one platform to coordinate multiple travel elements quickly.',
+        daily:['Book hotels','Review travel options','Track trip details','Support itinerary completion'],
+        master:['Travel booking flow','Trip detail accuracy','Confirmation tracking'],
+        days:['Day 11']
       }
     ];
-    const assessment = [
-      {
-        id: 'q1',
-        question: 'A CEO has back-to-back meetings with no break, and a new urgent client call is requested. What is the best first action for the EA?',
-        options: [
-          'Accept the new client call immediately so the CEO does not miss it.',
-          'Review the full calendar, identify the least critical meeting, and propose options with buffers.',
-          'Tell the client the CEO is unavailable all week.',
-          'Move every meeting by 30 minutes without checking priorities.'
-        ],
-        answer: 1,
-        focus: 'Calendar management'
-      },
-      {
-        id: 'q2',
-        question: 'Which inbox action best reflects strong EA judgment?',
-        options: [
-          'Forward every email to the CEO so they can decide.',
-          'Delete newsletters and mark all other emails unread.',
-          'Sort emails by urgency, draft responses where appropriate, and highlight only what needs executive input.',
-          'Reply to all emails immediately regardless of priority.'
-        ],
-        answer: 2,
-        focus: 'Inbox management'
-      },
-      {
-        id: 'q3',
-        question: 'A stakeholder sends a vague message asking for an update. What is the best EA response style?',
-        options: [
-          'Write a short, clear response with status, next steps, and timing.',
-          'Ignore it until the CEO responds.',
-          'Reply emotionally because the request is unclear.',
-          'Send a one-word response to save time.'
-        ],
-        answer: 0,
-        focus: 'Professional communication'
-      },
-      {
-        id: 'q4',
-        question: 'Why are calendar buffers important in executive support?',
-        options: [
-          'They make the calendar look full and busy.',
-          'They reduce context switching and give room for prep, travel, or overruns.',
-          'They are only needed for sales teams.',
-          'They remove the need to prioritize meetings.'
-        ],
-        answer: 1,
-        focus: 'Calendar management'
-      },
-      {
-        id: 'q5',
-        question: 'What should an EA include in a strong meeting follow-up?',
-        options: [
-          'Only a thank-you message with no details.',
-          'A full recording only.',
-          'Decisions made, action items, owners, and deadlines.',
-          'Nothing unless someone asks.'
-        ],
-        answer: 2,
-        focus: 'Meeting management'
-      },
-      {
-        id: 'q6',
-        question: 'What is the best reason to use a task manager like ClickUp or Asana?',
-        options: [
-          'To replace all communication forever.',
-          'To keep priorities, follow-ups, and deadlines visible and organized.',
-          'To make the workload appear larger.',
-          'To avoid documenting responsibilities.'
-        ],
-        answer: 1,
-        focus: 'Task management'
-      },
-      {
-        id: 'q7',
-        question: 'Which file naming style is most useful for executives and teams?',
-        options: [
-          'finalversionnewrealfinal.pdf',
-          'document1.pdf',
-          '2026-04-30_Board-Meeting_Agenda_v1.pdf',
-          'agenda.pdf'
-        ],
-        answer: 2,
-        focus: 'Document management'
-      },
-      {
-        id: 'q8',
-        question: 'A repetitive weekly task takes 30 minutes and follows the same steps every time. What should the EA do?',
-        options: [
-          'Keep doing it manually and never review the process.',
-          'Look for a standard process or simple automation opportunity.',
-          'Stop doing it without telling anyone.',
-          'Delegate it randomly to a different person each week.'
-        ],
-        answer: 1,
-        focus: 'Workflow efficiency'
-      },
-      {
-        id: 'q9',
-        question: 'Why does CRM hygiene matter when supporting a CEO or founder?',
-        options: [
-          'Because it helps keep records accurate, follow-ups visible, and relationships easier to manage.',
-          'Because it replaces the calendar.',
-          'Because it is only important for marketing.',
-          'Because it is optional once a deal is closed.'
-        ],
-        answer: 0,
-        focus: 'CRM support'
-      },
-      {
-        id: 'q10',
-        question: 'An executive asks for help with a two-day trip involving meetings in another time zone. What should the EA prioritize?',
-        options: [
-          'Only the flight booking.',
-          'Flights, hotel, local times, meeting schedule, transit time, and contingency notes.',
-          'Only the hotel and no calendar holds.',
-          'Wait until the day before to prepare.'
-        ],
-        answer: 1,
-        focus: 'Travel coordination'
-      },
-      {
-        id: 'q11',
-        question: 'What best reflects executive-level thinking from an EA?',
-        options: [
-          'Bringing problems with no suggested solution.',
-          'Waiting for instructions on every small task.',
-          'Spotting risks early and presenting practical options.',
-          'Avoiding decisions completely.'
-        ],
-        answer: 2,
-        focus: 'Executive thinking'
-      },
-      {
-        id: 'q12',
-        question: 'When representing a CEO in communication, which principle is most important?',
-        options: [
-          'Be casual at all times.',
-          'Protect the executive’s reputation through clarity, professionalism, and consistency.',
-          'Use very long messages to sound detailed.',
-          'Reply only when pressured.'
-        ],
-        answer: 1,
-        focus: 'Executive communication'
-      }
+
+    const focusAreas = [
+      {title:'Communication judgment', text:'Can the trainee write clearly and professionally on behalf of an executive?'},
+      {title:'Inbox triage', text:'Can the trainee separate what is urgent, what can be drafted, and what truly needs escalation?'},
+      {title:'Calendar management', text:'Can the trainee protect executive time, handle conflicts, and schedule with good logic?'},
+      {title:'Task follow-through', text:'Can the trainee track commitments, owners, and deadlines reliably?'},
+      {title:'Meeting support', text:'Can the trainee prepare agendas, capture notes, and send useful follow-ups?'},
+      {title:'Document organization', text:'Can the trainee keep files, trackers, and records structured and easy to find?'},
+      {title:'Executive thinking', text:'Can the trainee anticipate needs, present options, and help reduce decision chaos?'},
+      {title:'Travel and CRM support', text:'Can the trainee handle travel planning and maintain visibility in relationship systems?'}
     ];
+
     let activeWeek = 0;
+    let activeToolFilter = 'All';
 
     const roadmapGrid = document.getElementById('roadmapGrid');
     const weekTabs = document.getElementById('weekTabs');
     const daysGrid = document.getElementById('daysGrid');
-    const toolsGrid = document.getElementById('toolsGrid');
+    const toolGrid = document.getElementById('toolGrid');
+    const toolFilters = document.getElementById('toolFilters');
+    const toolSearch = document.getElementById('toolSearch');
     const focusList = document.getElementById('focusList');
 
-    function firstItems(list, count){
-      return list.slice(0, count);
+    const toolModal = document.getElementById('toolModal');
+    const modalHeader = document.getElementById('modalHeader');
+    const modalIcon = document.getElementById('modalIcon');
+    const modalCategory = document.getElementById('modalCategory');
+    const modalTitle = document.getElementById('modalTitle');
+    const modalSubtitle = document.getElementById('modalSubtitle');
+    const modalPurpose = document.getElementById('modalPurpose');
+    const modalWhy = document.getElementById('modalWhy');
+    const modalDaily = document.getElementById('modalDaily');
+    const modalMaster = document.getElementById('modalMaster');
+    const modalDays = document.getElementById('modalDays');
+    const modalFamily = document.getElementById('modalFamily');
+    const closeModalBtn = document.getElementById('closeModalBtn');
+
+    function favicon(domain){
+      return `https://www.google.com/s2/favicons?domain=${encodeURIComponent(domain)}&sz=128`;
+    }
+
+    function renderStats(){
+      document.getElementById('statWeeks').textContent = `${curriculum.length} Weeks`;
+      document.getElementById('statDays').textContent = `${curriculum.reduce((sum, week)=>sum + week.days.length, 0)} Days`;
+      document.getElementById('statTools').textContent = `${tools.length} Tools`;
     }
 
     function renderRoadmap(){
-      roadmapGrid.innerHTML = curriculum.map(week => {
-        const lessonCount = week.days.length;
-        const tags = firstItems(week.days.map(day => day.title), 3)
-          .map(item => `<span class="tag">${item}</span>`).join('');
-        return `
-          <article class="week-card">
-            <div class="week-number">W${week.week}</div>
-            <h4>${week.theme}</h4>
-            <div class="theme">${week.goal}</div>
-            <div class="week-goal"><strong style="color:var(--text)">Focus:</strong> ${week.days[0].objective}</div>
-            <div class="muted"><strong style="color:var(--text)">Lesson count:</strong> ${lessonCount} guided sessions</div>
-            <div class="tag-list">${tags}</div>
-          </article>
-        `;
-      }).join('');
+      roadmapGrid.innerHTML = curriculum.map(week => `
+        <article class="week-card">
+          <div class="week-badge">W${week.week}</div>
+          <h4>${week.theme}</h4>
+          <p>${week.goal}</p>
+          <div class="tag-list">
+            ${week.days.slice(0,3).map(day => `<span class="tag">${day.title}</span>`).join('')}
+          </div>
+        </article>
+      `).join('');
     }
 
     function renderWeekTabs(){
@@ -1286,7 +1503,6 @@
           Week ${week.week} • ${week.theme}
         </button>
       `).join('');
-
       weekTabs.querySelectorAll('.week-tab').forEach(btn => {
         btn.addEventListener('click', () => {
           activeWeek = Number(btn.dataset.index);
@@ -1301,22 +1517,33 @@
       daysGrid.innerHTML = week.days.map(day => `
         <article class="day-card">
           <div class="day-top">
-            <div>
-              <div class="day-pill">${day.day}</div>
-            </div>
-            <div class="small-tag">${day.output}</div>
+            <span class="day-pill">${day.day}</span>
+            <span class="output-pill">${day.output}</span>
           </div>
+
           <h5>${day.title}</h5>
-          <p class="muted" style="margin:8px 0 0;">${day.objective}</p>
+          <p><strong style="color:var(--text)">Main objective:</strong> ${day.objective}</p>
 
-          <div class="label">Overview</div>
-          <p class="muted" style="margin:0;">${day.overview}</p>
+          <div class="day-learn-grid">
+            <div class="learn-box">
+              <strong>What they will learn</strong>
+              <ul class="clean">
+                ${day.learn.map(item => `<li>${item}</li>`).join('')}
+              </ul>
+            </div>
+            <div class="learn-box">
+              <strong>Why it matters</strong>
+              <p style="margin:0">${day.why}</p>
+            </div>
+          </div>
 
-          <div class="label">Suggested activities</div>
-          <ul class="clean">${day.activities.map(item => `<li>${item}</li>`).join('')}</ul>
+          <div class="subheading">Practice for the day</div>
+          <ul class="clean">
+            ${day.practice.map(item => `<li>${item}</li>`).join('')}
+          </ul>
 
-          <div class="label">Homework / Output</div>
-          <p class="muted" style="margin:0;">${day.homework}</p>
+          <div class="subheading">Homework / required output</div>
+          <p>${day.homework}</p>
 
           <div class="small-tags">
             ${day.tools.map(tool => `<span class="small-tag">${tool}</span>`).join('')}
@@ -1325,41 +1552,111 @@
       `).join('');
     }
 
+    function getCategories(){
+      return ['All', ...new Set(tools.map(tool => tool.category))];
+    }
+
+    function renderToolFilters(){
+      toolFilters.innerHTML = getCategories().map(category => `
+        <button class="tool-filter ${category === activeToolFilter ? 'active' : ''}" data-category="${category}">
+          ${category}
+        </button>
+      `).join('');
+
+      toolFilters.querySelectorAll('.tool-filter').forEach(btn => {
+        btn.addEventListener('click', () => {
+          activeToolFilter = btn.dataset.category;
+          renderToolFilters();
+          renderTools();
+        });
+      });
+    }
+
+    function filteredTools(){
+      const searchTerm = toolSearch.value.trim().toLowerCase();
+      return tools.filter(tool => {
+        const matchesCategory = activeToolFilter === 'All' || tool.category === activeToolFilter;
+        const combined = [tool.name, tool.family, tool.category, tool.blurb].join(' ').toLowerCase();
+        const matchesSearch = !searchTerm || combined.includes(searchTerm);
+        return matchesCategory && matchesSearch;
+      });
+    }
+
     function renderTools(){
-      toolsGrid.innerHTML = toolCategories.map(group => `
-        <article class="tool-card">
-          <h4>${group.title}</h4>
-          <p>${group.description}</p>
-          <div class="small-tags">
-            ${group.tools.map(tool => `<span class="small-tag">${tool}</span>`).join('')}
+      const list = filteredTools();
+      toolGrid.innerHTML = list.map(tool => `
+        <article class="tool-card" style="--brand:${tool.brand}" data-tool="${tool.name}">
+          <div class="tool-head">
+            <div class="tool-icon">
+              <img src="${favicon(tool.domain)}" alt="${tool.name} logo" loading="lazy">
+            </div>
+            <div class="tool-meta">${tool.category}</div>
+          </div>
+          <h4>${tool.name}</h4>
+          <p>${tool.blurb}</p>
+          <div class="tool-uses">
+            ${(tool.days || []).slice(0,4).map(day => `<span class="tool-use">${day}</span>`).join('')}
           </div>
         </article>
       `).join('');
+
+      toolGrid.querySelectorAll('.tool-card').forEach(card => {
+        card.addEventListener('click', () => {
+          const tool = tools.find(item => item.name === card.dataset.tool);
+          if(tool){ openToolModal(tool); }
+        });
+      });
     }
 
-    function renderAssessmentFocus(){
-      const uniqueFocus = [...new Set(assessment.map(item => item.focus))];
-      focusList.innerHTML = uniqueFocus.map((focus, idx) => `
+    function openToolModal(tool){
+      modalHeader.style.setProperty('--modalBrand', tool.brand);
+      modalIcon.src = favicon(tool.domain);
+      modalIcon.alt = `${tool.name} logo`;
+      modalCategory.textContent = tool.category;
+      modalTitle.textContent = tool.name;
+      modalSubtitle.textContent = tool.blurb;
+      modalPurpose.textContent = tool.purpose;
+      modalWhy.textContent = tool.why;
+      modalDaily.innerHTML = tool.daily.map(item => `<li>${item}</li>`).join('');
+      modalMaster.innerHTML = tool.master.map(item => `<li>${item}</li>`).join('');
+      modalDays.innerHTML = (tool.days || []).map(day => `<span class="suite-chip">${day}</span>`).join('');
+      modalFamily.textContent = `${tool.family}${tool.suite ? '. Included apps: ' + tool.suite.join(', ') + '.' : '.'}`;
+      toolModal.classList.add('open');
+      toolModal.setAttribute('aria-hidden', 'false');
+      document.body.style.overflow = 'hidden';
+    }
+
+    function closeToolModal(){
+      toolModal.classList.remove('open');
+      toolModal.setAttribute('aria-hidden', 'true');
+      document.body.style.overflow = '';
+    }
+
+    function renderAssessment(){
+      focusList.innerHTML = focusAreas.map(item => `
         <div class="focus-item">
-          <strong>${focus}</strong>
-          Area ${idx + 1} in the final scenario and question set.
+          <strong>${item.title}</strong>
+          ${item.text}
         </div>
       `).join('');
     }
 
-    function renderStats(){
-      document.getElementById('statWeeks').textContent = `${curriculum.length} Weeks`;
-      document.getElementById('statDays').textContent = `${curriculum.reduce((sum, week) => sum + week.days.length, 0)} Days`;
-      document.getElementById('statTools').textContent = `${toolCategories.length} Groups`;
-      document.getElementById('statAssessment').textContent = `${assessment.length} Checks`;
-    }
+    closeModalBtn.addEventListener('click', closeToolModal);
+    toolModal.addEventListener('click', (e) => {
+      if(e.target === toolModal) closeToolModal();
+    });
+    document.addEventListener('keydown', (e) => {
+      if(e.key === 'Escape') closeToolModal();
+    });
+    toolSearch.addEventListener('input', renderTools);
 
     renderStats();
     renderRoadmap();
     renderWeekTabs();
     renderDays();
+    renderToolFilters();
     renderTools();
-    renderAssessmentFocus();
+    renderAssessment();
   </script>
 </body>
 </html>
